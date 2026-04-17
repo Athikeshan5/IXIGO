@@ -1,4 +1,4 @@
-package com.ixigo.stepdefinition;
+package com.ixigo.testing.stepdefinition;
 
 import java.io.Closeable;
 import java.time.Duration;

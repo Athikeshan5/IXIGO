@@ -1,8 +1,8 @@
 Feature: Hotel search 
 Scenario: Search hotel with valid location
-Given open the browser
-And Navigate to url "https://www.ixigo.com/hotels"
-Given User is on the Hotel page
+#Given open the browser
+#And Navigate to url "https://www.ixigo.com/hotels"
+#Given User is on the Hotel page
 When user enters destination "Chennai" on the search bar
 And click on search button
 When user selects check-in date 

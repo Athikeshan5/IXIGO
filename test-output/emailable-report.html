@@ -9,75 +9,37 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">482</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">22,019</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.ixigo.testRunner.RunnerIO</td><td><a href="#m0">runScenario</a></td><td rowspan="1">1776361057117</td><td rowspan="1">177</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.ixigo.testing.testrunner.RunnerIO</td><td><a href="#m0">runScenario</a></td><td rowspan="1">1776452131794</td><td rowspan="1">21760</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">com.ixigo.testRunner.RunnerIO#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify hotel search and booking flow&quot;</td><td>&quot;Complete Hotel Booking Journey&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">io.cucumber.testng.UndefinedStepException: The step &apos;click the hotel module&apos; and 11 other step(s) are undefined.
-You can implement these steps using the snippet(s) below:
-
-@Given(&quot;click the hotel module&quot;)
-public void click_the_hotel_module() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;click the search destination field and enter the destination {string}&quot;)
-public void click_the_search_destination_field_and_enter_the_destination(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;select check-in date after {int} days and check-out date after {int} days&quot;)
-public void select_check_in_date_after_days_and_check_out_date_after_days(Integer int1, Integer int2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;select {string} and {string}&quot;)
-public void select_and(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;click the search button&quot;)
-public void click_the_search_button() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;click the first hotel from the search results&quot;)
-public void click_the_first_hotel_from_the_search_results() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;verify hotel details like name, amenities, photos and rooms&quot;)
-public void verify_hotel_details_like_name_amenities_photos_and_rooms() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;select {string} and click on reserve rooms&quot;)
-public void select_and_click_on_reserve_rooms(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;enter with valid credentials {string} and {string}&quot;)
-public void enter_with_valid_credentials_and(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then(&quot;verify booking details page&quot;)
-public void verify_booking_details_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then(&quot;verify hotel name, room type, check-in and check-out dates&quot;)
-public void verify_hotel_name_room_type_check_in_and_check_out_dates() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then(&quot;verify total price details&quot;)
-public void verify_total_price_details() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-	at ✽.click the hotel module(file:///C:/Selenium_cg/SeleniumIxigo/./src/test/java/com/ixigo/featureFile/HotelBooking.feature:5)
+<h2>Default test</h2><h3 id="m0">com.ixigo.testing.testrunner.RunnerIO#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify hotel search and booking flow&quot;</td><td>&quot;Complete Hotel Booking Journey&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@aria-label=&apos;20 April 2026&apos;]&quot;}
+  (Session info: chrome=147.0.7727.56)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: &apos;4.39.0&apos;, revision: &apos;126f156aee&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;25.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a97a37ade00dddc618ab974577f0365d, findElement {value=//*[@aria-label=&apos;20 April 2026&apos;], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.56, chrome: {chromedriverVersion: 147.0.7727.57 (b4f28b5637d0..., userDataDir: C:\Users\kanik\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60948}, goog:processID: 23120, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60948/devtoo..., se:cdpVersion: 147.0.7727.56, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a97a37ade00dddc618ab974577f0365d
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:561)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:166)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:384)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:378)
+	at com.ixigo.testingPages.HotelBookingPage.clickDate(HotelBookingPage.java:121)
+	at com.ixigo.testingPages.HotelBookingPage.selectDates(HotelBookingPage.java:93)
+	at com.ixigo.testing.stepdefinition.HotelBooking.select_check_in_date_as_days_from_today_and_check_out_date_as_days_from_today(HotelBooking.java:36)
+	at ✽.select check-in date as 2 days from today and check-out date as 5 days from today(file:///C:/Selenium_cg/SeleniumIxigo/./src/test/java/com/ixigo/featureFile/HotelBooking.feature:9)
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

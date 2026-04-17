@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.ixigo.testRunner.RunnerIO">
+      <class name="com.ixigo.testing.testrunner.RunnerIO">
         <methods>
           <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="0"/>
           <include name="tearDownClass"/>
+          <include name="runScenario" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.ixigo.testRunner.RunnerIO -->
+      </class> <!-- com.ixigo.testing.testrunner.RunnerIO -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
