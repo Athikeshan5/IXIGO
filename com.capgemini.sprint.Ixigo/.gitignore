@@ -1,0 +1,16 @@
+# Eclipse files
+.metadata/
+.settings/
+.project
+.classpath
+
+# Maven
+target/
+
+# Compiled files
+*.class
+*.log
+
+# Test output
+test-output/
+Reports/
