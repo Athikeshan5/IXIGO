@@ -66,7 +66,7 @@
 //	        System.out.println("Flight results verified successfully");
 //	    }
 //	}
-package stepdefinition;
+package com.ixigo.testing.stepdefinition;
 
 
 

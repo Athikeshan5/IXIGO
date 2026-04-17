@@ -1,5 +1,5 @@
 
-package stepdefinition;
+package com.ixigo.testing.stepdefinition;
 
 
 

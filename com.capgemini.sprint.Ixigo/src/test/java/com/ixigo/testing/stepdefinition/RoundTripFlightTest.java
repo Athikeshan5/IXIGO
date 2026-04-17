@@ -1,4 +1,4 @@
-package stepdefinition;
+package com.ixigo.testing.stepdefinition;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
