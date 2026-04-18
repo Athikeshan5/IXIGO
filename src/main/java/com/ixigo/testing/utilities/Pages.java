@@ -3,7 +3,10 @@ package com.ixigo.testing.utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ixigo.testing.pages.FlightFilterPage;
+import com.ixigo.testing.pages.FlightdetailsPage;
 import com.ixigo.testing.pages.HomePage;
+import com.ixigo.testing.pages.OneWayFlightPage;
 import com.ixigo.testing.pages.PNRStatusPage;
 import com.ixigo.testing.pages.PNRValidationPage;
 import com.ixigo.testing.pages.RunningStatusPage;
@@ -22,6 +25,9 @@ public class Pages {
 	public static RunningStatusPage rs;
 	public static TrainSeatAvailabilityPage ts;
 	public static SeatAvailabilityFilterPage saf;
+	public static OneWayFlightPage OFP;
+    public static FlightFilterPage FFP;
+    public static FlightdetailsPage FDP;
 	public static void allPages(WebDriver driver) {
 		hp=PageFactory.initElements(driver, HomePage.class);
 		tp=PageFactory.initElements(driver, TrainsPage.class);
@@ -31,5 +37,8 @@ public class Pages {
 		rs=PageFactory.initElements(driver, RunningStatusPage.class);
 	    ts=PageFactory.initElements(driver, TrainSeatAvailabilityPage.class);
 	    saf=PageFactory.initElements(driver, SeatAvailabilityFilterPage.class);
+	    OFP=PageFactory.initElements(driver,OneWayFlightPage.class);
+   	 FFP=PageFactory.initElements(driver,FlightFilterPage.class);
+   	 FDP=PageFactory.initElements(driver,FlightdetailsPage.class);
 	}
 }
