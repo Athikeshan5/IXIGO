@@ -1,208 +1,347 @@
 package com.ixigo.testing.pages;
-//
-//import java.time.Duration;
-//import java.time.LocalDate;
-//import java.time.format.DateTimeFormatter;
-//import java.util.List;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.JavascriptExecutor;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//
-//
-//
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.ixigo.testing.utilities.AllUtilityFunctions;
+
+import java.time.Duration;
+
 public class OneWayFlightPage {
-//
-//
-//	    private final WebDriver driver;
-//	    private final WebDriverWait wait;
-//
-//	    // --- Locators ---
-//	    private final By onewayBtn        = By.xpath("//button[normalize-space()='One Way']");
-//	    private final By fromSpan         = By.xpath("//span[text()='From']");
-//	    private final By fromInput        = By.xpath("//label[text()='From']/..//input");
-//	    private final By toSpan           = By.xpath("//span[text()='To']");
-//	    private final By toInput          = By.xpath("//label[text()='To']/..//input");
-//	    private final By searchBtn        = By.xpath("//button[normalize-space()='Search']");
-//	    private final By departureDateBtn = By.cssSelector("[data-testid='departureDate']");
-//	    private final By calendarNextBtn  = By.xpath("//button[@aria-label='Next Month' or @aria-label='next']");
-//
-//	    public OneWayFlightPage(WebDriver driver) {
-//	        this.driver = driver;
-//	        this.wait   = new WebDriverWait(driver,Duration.ofSeconds(15));
-//	    }
-//
-//	    public void navigateTo(String url) {
-//	        driver.get(url);
-//	    }
-//
-//	    public void selectTripType() {
-//	        wait.until(ExpectedConditions.elementToBeClickable(onewayBtn)).click();
-//	    }
-//
-//	    public void enterSource(String source) throws InterruptedException {
-//	        wait.until(ExpectedConditions.elementToBeClickable(fromSpan)).click();
-//	        Thread.sleep(800);
-//	        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(fromInput));
-//	        input.clear();
-//	        input.sendKeys(source);
-//	        selectDropdownOption(source);
-//	    }
-//
-//	    public void enterDestination(String destination) throws InterruptedException {
-//	        wait.until(ExpectedConditions.elementToBeClickable(toSpan)).click();
-//	        Thread.sleep(800);
-//	        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(toInput));
-//	        input.clear();
-//	        input.sendKeys(destination);
-//	        selectDropdownOption(destination);
-//	    }
-//
-//	    /**
-//	     * Selects a date from the calendar by navigating months dynamically.
-//	     * @param dateStr format: dd-MM-yyyy (e.g., "25-05-2026")
-//	     */
-//	    public void selectDate(String dateStr) throws InterruptedException {
-//
-//	        // Parse the date - format must be dd-MM-yyyy
-//	        LocalDate targetDate = LocalDate.parse(dateStr, 
-//	                               DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-//
-//	        String targetDay   = String.valueOf(targetDate.getDayOfMonth());
-//	        String targetMonth = targetDate.format(DateTimeFormatter.ofPattern("MMMM")); 
-//	        String targetYear  = String.valueOf(targetDate.getYear());
-//
-//	        // Step 1 - Click date field to open calendar
-//	        WebElement dateField = wait.until(ExpectedConditions.elementToBeClickable(
-//	            By.cssSelector("[data-testid='departureDate']")
-//	        ));
-//	        jsClick(dateField);
-//	        Thread.sleep(2000);
-//
-//	        // Step 2 - Navigate to correct month
-//	        for (int i = 0; i < 12; i++) {
-//
-//	            // Check if current month and year is visible
-//	            String calendarText = driver.findElement(By.tagName("body")).getText();
-//
-//	            if (calendarText.contains(targetMonth) && 
-//	                calendarText.contains(targetYear)) {
-//	                System.out.println("Found month: " + targetMonth + " " + targetYear);
-//	                break;
-//	            }
-//
-//	            // Click Next button
-//	            List<WebElement> nextButtons = driver.findElements(
-//	                By.xpath("//button[@aria-label='Next' or " +
-//	                         "@aria-label='next month' or " +
-//	                         "contains(@class,'next') or " +
-//	                         "contains(@class,'Next')]")
-//	            );
-//
-//	            if (!nextButtons.isEmpty()) {
-//	                jsClick(nextButtons.get(0));
-//	                Thread.sleep(800);
-//	            } else {
-//	                System.out.println("Next button not found!");
-//	                break;
-//	            }
-//	        }
-//
-//	        // Step 3 - Click the correct day
-//	        Thread.sleep(1000);
-//
-//	        // Find all day elements and click the exact match
-//	        List<WebElement> allDays = driver.findElements(
-//	            By.xpath("//*[normalize-space(text())='" + targetDay + "']" +
-//	                     "[not(contains(@class,'disabled'))]" +
-//	                     "[not(contains(@class,'past'))]")
-//	        );
-//
-//	        System.out.println("Day elements found: " + allDays.size());
-//
-//	        if (!allDays.isEmpty()) {
-//	            jsClick(allDays.get(0));
-//	            System.out.println("Clicked date: " + targetDay);
-//	        } else {
-//	            System.out.println("Day not found! Taking screenshot...");
-//	        }
-//
-//	        Thread.sleep(500);
-//	    }
-//	       
-//	    public void clickSearch() {
-//	        wait.until(ExpectedConditions.elementToBeClickable(searchBtn)).click();
-//	    }
-//
-//	    public boolean isFlightResultsDisplayed() {
-//	        try {
-//	            // Wait longer - flight results take time to load
-//	            WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//
-//	            // Try multiple possible XPaths for Ixigo results page
-//	            By[] resultLocators = {
-//	                By.xpath("//*[contains(@class,'flight-listing')]"),
-//	                By.xpath("//*[contains(@class,'search-result')]"),
-//	                By.xpath("//*[contains(@class,'flight-card')]"),
-//	                By.xpath("//*[contains(@class,'result-item')]"),
-//	                By.xpath("//*[contains(text(),'flights found')]"),
-//	                By.xpath("//*[contains(text(),'Flights found')]"),
-//	                By.xpath("//*[contains(@class,'airlineName')]"),
-//	                By.xpath("//*[contains(@class,'price')]"),
-//	                // URL check - Ixigo changes URL after search
-//	                By.xpath("//div[contains(@class,'listing')]")
-//	            };
-//
-//	            // Try each locator
-//	            for (By locator : resultLocators) {
-//	                List<WebElement> elements = driver.findElements(locator);
-//	                if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
-//	                    System.out.println("Results found with: " + locator);
-//	                    return true;
-//	                }
-//	            }
-//
-//	            // Final check - verify URL changed to results page
-//	            String currentUrl = driver.getCurrentUrl();
-//	            System.out.println("Current URL: " + currentUrl);
-//
-//	            if (currentUrl.contains("/flight/") || 
-//	                currentUrl.contains("results") ||
-//	                currentUrl.contains("search")) {
-//	                System.out.println("URL confirms results page loaded!");
-//	                return true;
-//	            }
-//
-//	            return false;
-//
-//	        } catch (Exception e) {
-//	            System.out.println("Error checking results: " + e.getMessage());
-//	            return false;
-//	        }
-//	    }
-//	    public String getCurrentUrl() {
-//	        return driver.getCurrentUrl();
-//	    }
-//
-//	    // --- Helpers ---
-//
-//	    private void selectDropdownOption(String text) throws InterruptedException {
-//	        Thread.sleep(2500);
-//	        WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//	            By.xpath("//span[contains(.,'" + text + "')]")
-//	        ));
-//	        jsClick(option);
-//	    }
-//
-//	    private void jsClick(WebElement element) {
-//	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-//	    }
+
+    private WebDriver     driver;
+    private WebDriverWait wait;
+
+    public OneWayFlightPage(WebDriver driver) {
+        this.driver = driver;
+        this.wait   = new WebDriverWait(driver, Duration.ofSeconds(20));
+        PageFactory.initElements(driver, this);
+    }
+
+    // ═══════════════════════════════════════════
+    // LOCATORS
+    // ═══════════════════════════════════════════
+
+    @FindBy(xpath = "//button[normalize-space()='One Way']")
+    private WebElement oneWayBtn;
+
+    @FindBy(xpath = "//button[normalize-space()='Round Trip']")
+    private WebElement roundTripBtn;
+
+    @FindBy(xpath = "//span[text()='From']")
+    private WebElement fromSpan;
+
+    @FindBy(xpath = "//label[text()='From']/..//input")
+    private WebElement fromInput;
+
+    @FindBy(xpath = "//span[text()='To']")
+    private WebElement toSpan;
+
+    @FindBy(xpath = "//label[text()='To']/..//input")
+    private WebElement toInput;
+
+    @FindBy(css = "[data-testid='departureDate']")
+    private WebElement departureDateField;
+
+    @FindBy(css = "[data-testid='returnDate']")
+    private WebElement returnDateField;
+
+    @FindBy(xpath = "//button[normalize-space()='Search']")
+    private WebElement searchBtn;
+
+    @FindBy(xpath = "//button[contains(text(),'Done') or " +
+                    "contains(text(),'Apply') or " +
+                    "contains(text(),'DONE')]")
+    private WebElement doneBtn;
+
+    // ═══════════════════════════════════════════
+    // GETTERS & SETTERS
+    // ═══════════════════════════════════════════
+
+    public WebElement getOneWayBtn()               { return oneWayBtn;          }
+    public void setOneWayBtn(WebElement e)         { this.oneWayBtn = e;        }
+
+    public WebElement getRoundTripBtn()            { return roundTripBtn;       }
+    public void setRoundTripBtn(WebElement e)      { this.roundTripBtn = e;     }
+
+    public WebElement getFromSpan()                { return fromSpan;           }
+    public void setFromSpan(WebElement e)          { this.fromSpan = e;         }
+
+    public WebElement getFromInput()               { return fromInput;          }
+    public void setFromInput(WebElement e)         { this.fromInput = e;        }
+
+    public WebElement getToSpan()                  { return toSpan;             }
+    public void setToSpan(WebElement e)            { this.toSpan = e;           }
+
+    public WebElement getToInput()                 { return toInput;            }
+    public void setToInput(WebElement e)           { this.toInput = e;          }
+
+    public WebElement getDepartureDateField()      { return departureDateField; }
+    public void setDepartureDateField(WebElement e){ this.departureDateField=e; }
+
+    public WebElement getReturnDateField()         { return returnDateField;    }
+    public void setReturnDateField(WebElement e)   { this.returnDateField = e;  }
+
+    public WebElement getSearchBtn()               { return searchBtn;          }
+    public void setSearchBtn(WebElement e)         { this.searchBtn = e;        }
+
+    public WebElement getDoneBtn()                 { return doneBtn;            }
+    public void setDoneBtn(WebElement e)           { this.doneBtn = e;          }
+
+    // ═══════════════════════════════════════════
+    // BUSINESS LOGIC
+    // ═══════════════════════════════════════════
+
+    public void selectTripType(String tripType) throws InterruptedException {
+        if (tripType.equalsIgnoreCase("Round Trip")) {
+            jsClick(getRoundTripBtn());
+        } else {
+            jsClick(getOneWayBtn());
+        }
+        Thread.sleep(1000);
+        AllUtilityFunctions.log("Trip type selected: " + tripType);
+    }
+
+    public void enterSource(String source) throws InterruptedException {
+        AllUtilityFunctions.click(getFromSpan());
+        Thread.sleep(1000);
+        AllUtilityFunctions.sendKeys(getFromInput(), source);
+        Thread.sleep(3000);
+        WebElement dropdown = driver.findElement(
+            By.xpath("//span[contains(.,'" + source + "')]")
+        );
+        jsClick(dropdown);
+        AllUtilityFunctions.log("Source      : " + source);
+    }
+
+    public void enterDestination(String destination) throws InterruptedException {
+        AllUtilityFunctions.click(getToSpan());
+        Thread.sleep(1000);
+        AllUtilityFunctions.sendKeys(getToInput(), destination);
+        Thread.sleep(3000);
+        WebElement dropdown = driver.findElement(
+            By.xpath("//span[contains(.,'" + destination + "')]")
+        );
+        jsClick(dropdown);
+        AllUtilityFunctions.log("Destination : " + destination);
+    }
+
+    public void selectDepartureDate(String dateStr) throws InterruptedException {
+        jsClick(getDepartureDateField());
+        Thread.sleep(2000);
+        pickDateFromCalendar(dateStr);
+        AllUtilityFunctions.log("Travel Date : " + dateStr);
+    }
+
+    public void selectReturnDate(String dateStr) throws InterruptedException {
+        jsClick(getReturnDateField());
+        Thread.sleep(2000);
+        pickDateFromCalendar(dateStr);
+        AllUtilityFunctions.log("Return Date : " + dateStr);
+    }
+
+    public void selectTravellerDetails(String travellers, String cabinClass)
+                                        throws InterruptedException {
+
+        // Find traveller field dynamically
+        String[] travellerXpaths = {
+            "//*[contains(@data-testid,'traveller')]",
+            "//*[contains(@data-testid,'passenger')]",
+            "//*[contains(@class,'Traveller')]",
+            "//*[contains(@class,'traveller')]",
+            "//span[contains(text(),'Traveller')]",
+            "//div[contains(text(),'Traveller')]",
+            "//span[contains(text(),'Adult')]",
+            "//div[contains(text(),'Adult')]",
+            "//*[contains(text(),'1 Adult')]"
+        };
+
+        WebElement travellerField = null;
+        for (String xpath : travellerXpaths) {
+            List<WebElement> els = driver.findElements(By.xpath(xpath));
+            if (!els.isEmpty()) {
+                travellerField = els.get(0);
+                AllUtilityFunctions.log("Traveller field found!");
+                break;
+            }
+        }
+
+        if (travellerField == null) {
+            AllUtilityFunctions.log("❌ Traveller field not found!");
+            return;
+        }
+
+        jsClick(travellerField);
+        Thread.sleep(1500);
+
+        // Select cabin class
+        List<WebElement> cabinOptions = driver.findElements(
+            By.xpath("//*[normalize-space(text())='" + cabinClass + "']")
+        );
+        if (!cabinOptions.isEmpty()) {
+            jsClick(cabinOptions.get(0));
+            AllUtilityFunctions.log("Cabin       : " + cabinClass);
+        }
+
+        Thread.sleep(500);
+
+        // Click Done button
+        List<WebElement> doneBtns = driver.findElements(By.xpath(
+            "//button[contains(text(),'Done')] | " +
+            "//button[contains(text(),'Apply')] | " +
+            "//button[contains(text(),'DONE')]"
+        ));
+        if (!doneBtns.isEmpty()) {
+            jsClick(doneBtns.get(0));
+        }
+        AllUtilityFunctions.log("Travellers  : " + travellers);
+        Thread.sleep(500);
+    }
+
+    public void selectSpecialFare(String fareType) throws InterruptedException {
+        String[] fareXpaths = {
+            "//*[normalize-space(text())='" + fareType + "']",
+            "//label[contains(text(),'" + fareType + "')]",
+            "//span[contains(text(),'" + fareType + "')]",
+            "//*[contains(@class,'fare')][contains(text(),'" + fareType + "')]"
+        };
+        boolean clicked = false;
+        for (String xpath : fareXpaths) {
+            List<WebElement> els = driver.findElements(By.xpath(xpath));
+            if (!els.isEmpty()) {
+                jsClick(els.get(0));
+                AllUtilityFunctions.log("Fare        : " + fareType);
+                clicked = true;
+                break;
+            }
+        }
+        if (!clicked) {
+            AllUtilityFunctions.log("Fare not found: " + fareType);
+        }
+        Thread.sleep(500);
+    }
+
+    public void clickSearch() {
+        AllUtilityFunctions.waitForClickable(driver, getSearchBtn(), 10);
+        AllUtilityFunctions.click(getSearchBtn());
+        AllUtilityFunctions.log("Search button clicked");
+    }
+
+    public boolean isFlightResultsDisplayed() throws InterruptedException {
+        Thread.sleep(5000);
+        String url = AllUtilityFunctions.getCurrentUrl(driver);
+        AllUtilityFunctions.log("URL: " + url);
+        if (url.contains("/flight/") ||
+            url.contains("result")   ||
+            url.contains("search"))  return true;
+
+        String[] xpaths = {
+            "//*[contains(@class,'flight-card')]",
+            "//*[contains(@class,'listing')]",
+            "//*[contains(@class,'airlineName')]",
+            "//*[contains(text(),'flights found')]"
+        };
+        for (String x : xpaths) {
+            if (!driver.findElements(By.xpath(x)).isEmpty()) return true;
+        }
+        return false;
+    }
+
+    public boolean isAirlineNameDisplayed() {
+        return !driver.findElements(By.xpath(
+            "//*[contains(@class,'airlineName') or " +
+            "contains(@class,'airline-name')]"
+        )).isEmpty();
+    }
+
+    public boolean isFlightTimesDisplayed() {
+        return !driver.findElements(By.xpath(
+            "//*[contains(@class,'departure') or " +
+            "contains(@class,'arrival')]"
+        )).isEmpty();
+    }
+
+    public boolean isFlightPriceDisplayed() {
+        return !driver.findElements(By.xpath(
+            "//*[contains(@class,'price') or contains(text(),'₹')]"
+        )).isEmpty();
+    }
+
+    // ═══════════════════════════════════════════
+    // PRIVATE HELPERS
+    // ═══════════════════════════════════════════
+
+    private void pickDateFromCalendar(String dateStr)
+                                throws InterruptedException {
+        LocalDate targetDate = LocalDate.parse(dateStr,
+                               DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String targetDay   = String.valueOf(targetDate.getDayOfMonth());
+        String targetMonth = targetDate.format(
+                             DateTimeFormatter.ofPattern("MMMM"));
+        String targetYear  = String.valueOf(targetDate.getYear());
+
+        // Navigate to correct month
+        for (int i = 0; i < 24; i++) {
+            String bodyText = driver.findElement(
+                By.tagName("body")).getText();
+            if (bodyText.contains(targetMonth) &&
+                bodyText.contains(targetYear)) {
+                AllUtilityFunctions.log("Month found : "
+                    + targetMonth + " " + targetYear);
+                break;
+            }
+            List<WebElement> nextBtns = driver.findElements(By.xpath(
+                "//*[@aria-label='Next Month'] | " +
+                "//*[@aria-label='Next']        | " +
+                "//*[contains(@class,'next')][@role='button']"
+            ));
+            if (!nextBtns.isEmpty()) {
+                jsClick(nextBtns.get(0));
+                Thread.sleep(800);
+            } else break;
+        }
+        Thread.sleep(1000);
+
+        // Click correct day
+        String ariaLabel = targetMonth + " " + targetDay
+                         + ", " + targetDate.getYear();
+        String[] dayXpaths = {
+            "//*[@aria-label='" + ariaLabel + "']",
+            "//*[contains(@aria-label,'" + targetDay
+                + " " + targetMonth + "')]",
+            "//span[normalize-space(text())='" + targetDay + "']",
+            "//div[normalize-space(text())='"  + targetDay + "']"
+        };
+        for (String xpath : dayXpaths) {
+            List<WebElement> days = driver.findElements(By.xpath(xpath));
+            for (WebElement day : days) {
+                String cls = day.getAttribute("class");
+                if (cls != null && (cls.contains("disabled") ||
+                    cls.contains("blocked"))) continue;
+                try {
+                    jsClick(day);
+                    AllUtilityFunctions.log("✅ Date clicked : " + targetDay);
+                    return;
+                } catch (Exception e) {
+                    AllUtilityFunctions.log("Retry...");
+                }
+            }
+        }
+        AllUtilityFunctions.log("❌ Date not clicked: " + targetDay);
+    }
+
+    private void jsClick(WebElement element) {
+        ((JavascriptExecutor) driver)
+            .executeScript("arguments[0].click();", element);
+    }
 }
-
-
-
-
-
