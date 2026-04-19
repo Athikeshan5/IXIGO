@@ -12,37 +12,37 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.ixigo.testing.utilities.AllUtilityFunctions;
 
-public class SeatAvailabilityFilterPage {
+public class TakalTicketBookingPage {
 
     AllUtilityFunctions allUtilityFunctions = new AllUtilityFunctions();
 
+ 
 
     private By dateIconBy = By.xpath("//button[@aria-label='Open calendar']");
-    private By arrow = By.xpath("//button[text()='›']");
 
     public void bookticket(WebDriver driver, String date) {
-       
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         // Step 1: Open calendar
         wait.until(ExpectedConditions.elementToBeClickable(dateIconBy)).click();
 
-        // Click arrow twice
-        for (int i = 0; i < 2; i++) {
-            wait.until(ExpectedConditions.presenceOfElementLocated(arrow)).click();
-        }
-
         // Step 2: Click specific date
         wait.until(ExpectedConditions.presenceOfElementLocated(
-            By.xpath("//button[contains(@class,'react-calendar__tile react-calendar__month-view__days__day')]" +
-                     "/abbr[@aria-label='June " + date + ", 2026']")
+            By.xpath("//abbr[contains(@aria-label,'April 21, 2026')]")
         )).click();
     }
 
     public void seattype(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        // Filter tatkal
+        wait.until(ExpectedConditions.presenceOfElementLocated(
+            By.xpath("(//div[@class='flex items-center gap-5']/child::span)[2]")
+        )).click();
+
+        // Click Available or Waitlist seat
         wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[contains(text(),'Available') or contains(text(),'Waitlist')]")
+            By.xpath("//div[starts-with(text(),'Available') or contains(text(),'Waitlist')]")
         )).click();
     }
 
@@ -53,11 +53,11 @@ public class SeatAvailabilityFilterPage {
         )).click();
     }
 
-    public void price(WebDriver driver) {
+    public void price(WebDriver driver, String num) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.presenceOfElementLocated(
             By.cssSelector("[placeholder='Enter Mobile Number']")
-        )).sendKeys("8608980857", Keys.ENTER);
+        )).sendKeys(num, Keys.ENTER);
     }
 
     public void passenger(WebDriver driver, String name, String age) {
