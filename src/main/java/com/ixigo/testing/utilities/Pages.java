@@ -3,7 +3,10 @@ package com.ixigo.testing.utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ixigo.testing.pages.FlightFilterPage;
+import com.ixigo.testing.pages.FlightdetailsPage;
 import com.ixigo.testing.pages.HomePage;
+import com.ixigo.testing.pages.OneWayFlightPage;
 import com.ixigo.testing.pages.PNRStatusPage;
 import com.ixigo.testing.pages.PNRValidationPage;
 import com.ixigo.testing.pages.RunningStatusPage;
