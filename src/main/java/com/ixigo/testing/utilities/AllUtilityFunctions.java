@@ -17,162 +17,163 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class AllUtilityFunctions {
 
+	BaseClass b=new BaseClass();
     //  BASIC METHODS 
 
-    public static void openUrl(WebDriver driver, String url) {
+    public  void openUrl(WebDriver driver, String url) {
         driver.get(url);
     }
 
-    public static void maximizeBrowser(WebDriver driver) {
+    public  void maximizeBrowser(WebDriver driver) {
         driver.manage().window().maximize();
     }
 
-    public static void minimizeBrowser(WebDriver driver) {
+    public  void minimizeBrowser(WebDriver driver) {
         driver.manage().window().minimize();
     }
 
-    public static void refresh(WebDriver driver) {
+    public  void refresh(WebDriver driver) {
         driver.navigate().refresh();
     }
 
-    public static void closeBrowser(WebDriver driver) {
+    public  void closeBrowser(WebDriver driver) {
         driver.close();
     }
 
-    public static void quitBrowser(WebDriver driver) {
+    public  void quitBrowser(WebDriver driver) {
         driver.quit();
     }
 
     //  NAVIGATION 
 
-    public static void navigateTo(WebDriver driver, String url) {
+    public  void navigateTo(WebDriver driver, String url) {
         driver.navigate().to(url);
     }
 
-    public static void navigateTo(WebDriver driver, URL url) {
+    public  void navigateTo(WebDriver driver, URL url) {
         driver.navigate().to(url);
     }
 
-    public static void navigateBack(WebDriver driver) {
+    public  void navigateBack(WebDriver driver) {
         driver.navigate().back();
     }
 
-    public static void navigateForward(WebDriver driver) {
+    public  void navigateForward(WebDriver driver) {
         driver.navigate().forward();
     }
 
-    public static String getTitle(WebDriver driver) {
+    public  String getTitle(WebDriver driver) {
         return driver.getTitle();
     }
 
-    public static  String getCurrentUrl(WebDriver driver) {
+    public   String getCurrentUrl(WebDriver driver) {
         return driver.getCurrentUrl();
     }
 
     // ELEMENT ACTIONS 
 
-    public static void click(WebElement ele) {
+    public  void click(WebElement ele) {
         ele.click();
     }
 
-    public static void sendKeys(WebElement ele, String value) {
+    public  void sendKeys(WebElement ele, String value) {
         ele.clear();
         ele.sendKeys(value);
     }
 
-    public static String getText(WebElement ele) {
+    public  String getText(WebElement ele) {
         return ele.getText();
     }
 
-    public static boolean isDisplayed(WebElement ele) {
+    public boolean isDisplayed(WebElement ele) {
         return ele.isDisplayed();
     }
 
     // WAIT METHODS 
 
-    public static void implicitWait(WebDriver driver, long sec) {
+    public  void implicitWait(WebDriver driver, long sec) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
     }
 
-    public static void waitForVisibility(WebDriver driver, WebElement ele, long sec) {
+    public  void waitForVisibility(WebDriver driver, WebElement ele, long sec) {
         new WebDriverWait(driver, Duration.ofSeconds(sec))
                 .until(ExpectedConditions.visibilityOf(ele));
     }
 
-    public static void waitForClickable(WebDriver driver, WebElement ele, long sec) {
+    public  void waitForClickable(WebDriver driver, WebElement ele, long sec) {
         new WebDriverWait(driver, Duration.ofSeconds(sec))
                 .until(ExpectedConditions.elementToBeClickable(ele));
     }
 
-    public static void waitForTitle(WebDriver driver, String title, long sec) {
+    public  void waitForTitle(WebDriver driver, String title, long sec) {
         new WebDriverWait(driver, Duration.ofSeconds(sec))
                 .until(ExpectedConditions.titleContains(title));
     }
 
     //  ACTION METHODS 
 
-    public static void doubleClick(WebDriver driver, WebElement ele) {
+    public  void doubleClick(WebDriver driver, WebElement ele) {
         new Actions(driver).doubleClick(ele).perform();
     }
 
-    public static void rightClick(WebDriver driver, WebElement ele) {
+    public  void rightClick(WebDriver driver, WebElement ele) {
         new Actions(driver).contextClick(ele).perform();
     }
 
-    public static void moveToElement(WebDriver driver, WebElement ele) {
+    public void moveToElement(WebDriver driver, WebElement ele) {
         new Actions(driver).moveToElement(ele).perform();
     }
 
-    public static void dragAndDrop(WebDriver driver, WebElement src, WebElement dest) {
+    public  void dragAndDrop(WebDriver driver, WebElement src, WebElement dest) {
         new Actions(driver).dragAndDrop(src, dest).perform();
     }
 
-    public static void scrollToElement(WebDriver driver, WebElement ele) {
+    public  void scrollToElement(WebDriver driver, WebElement ele) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
     }
 
     //  ALERT
 
-    public static void acceptAlert(WebDriver driver) {
+    public  void acceptAlert(WebDriver driver) {
         driver.switchTo().alert().accept();
     }
 
-    public static void dismissAlert(WebDriver driver) {
+    public  void dismissAlert(WebDriver driver) {
         driver.switchTo().alert().dismiss();
     }
 
-    public static String getAlertText(WebDriver driver) {
+    public  String getAlertText(WebDriver driver) {
         return driver.switchTo().alert().getText();
     }
 
-    public static void sendAlertText(WebDriver driver, String msg) {
+    public  void sendAlertText(WebDriver driver, String msg) {
         driver.switchTo().alert().sendKeys(msg);
     }
 
     // FRAME 
 
-    public static void switchFrameByIndex(WebDriver driver, int index) {
+    public  void switchFrameByIndex(WebDriver driver, int index) {
         driver.switchTo().frame(index);
     }
 
-    public static void switchFrameByName(WebDriver driver, String name) {
+    public  void switchFrameByName(WebDriver driver, String name) {
         driver.switchTo().frame(name);
     }
 
-    public static void switchFrameByElement(WebDriver driver, WebElement ele) {
+    public  void switchFrameByElement(WebDriver driver, WebElement ele) {
         driver.switchTo().frame(ele);
     }
 
-    public static void switchToDefault(WebDriver driver) {
+    public  void switchToDefault(WebDriver driver) {
         driver.switchTo().defaultContent();
     }
 
     //  WINDOW 
 
-    public static void switchToWindowByTitle(WebDriver driver, String title) {
+    public  void switchToWindowByTitle(WebDriver driver, String title) {
         for (String win : driver.getWindowHandles()) {
             driver.switchTo().window(win);
-            if (driver.getTitle().equals(title)) {
+            if (driver.getTitle().contains(title)) {
                 break;
             }
         }
@@ -180,7 +181,7 @@ public class AllUtilityFunctions {
 
     //  SCREENSHOT 
 
-    public static String takeScreenshot(WebDriver driver, String name) {
+    public  String takeScreenshot(WebDriver driver, String name) {
         String path = "ScreenShot/" + name + ".png";
         try {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -193,7 +194,7 @@ public class AllUtilityFunctions {
 
     //  EXCEL 
 
-    public static String getExcelData(String path, String sheet, int row, int col) {
+    public  String getExcelData(String path, String sheet, int row, int col) {
         try {
             FileInputStream fis = new FileInputStream(path);
             XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -207,7 +208,7 @@ public class AllUtilityFunctions {
 
     //  PROPERTY
 
-    public static String getPropertyValue(String key) {
+    public  String getPropertyValue(String key) {
         try {
             FileInputStream fs = new FileInputStream("./src/test/resources/Reader/commonData.properties");
             Properties prop = new Properties();
@@ -220,20 +221,22 @@ public class AllUtilityFunctions {
 
     //  JAVA UTILITY 
 
-    public static int getRandomNumber() {
+    public  int getRandomNumber() {
         return new Random().nextInt(1000);
     }
 
-    public static String getCurrentDate() {
+    public  String getCurrentDate() {
         return new SimpleDateFormat("dd-MM-yyyy").format(new Date());
     }
 
     //  EXTENT REPORT 
 
-    public static ExtentReports extent;
-    public static ExtentTest test;
-
-    public static ExtentReports getReport() {
+    private static ExtentReports extent;
+   
+    private static final Object lock = new Object();
+    public  ExtentReports getReport() {
+    	// synchronized — only one thread creates it
+        synchronized (lock) {
         if (extent == null) {
             ExtentSparkReporter reporter = new ExtentSparkReporter("Reports/extent.html");
             extent = new ExtentReports();
@@ -241,22 +244,22 @@ public class AllUtilityFunctions {
         }
         return extent;
     }
-
-    public static void createTest(String name) {
-        test = getReport().createTest(name);
+    }
+    public  void createTest(String name) {
+    	BaseClass.test.set(getReport().createTest(name));
     }
 
-    public static void pass(String msg) {
-        test.pass(msg);
+    public  void pass(String msg) {
+    	BaseClass.test.get().pass(msg);
     }
 
-    public static void fail(String msg) {
-        test.fail(msg);
+    public  void fail(String msg) {
+    	BaseClass.test.get().fail(msg);
     }
 
     // failed screenshot add on report
 
-    public static void captureFailure(WebDriver driver, String testName) {
+    public  void captureFailure(WebDriver driver, String testName) {
         try {
             // 1. Sanitize the name
             String name = testName.replaceAll(" ", "_");
@@ -269,9 +272,8 @@ public class AllUtilityFunctions {
             String absolutePath = f.getAbsolutePath();
             
             // 4. Log the failure and attach the ABSOLUTE path
-            test.fail("Test Failed: " + name);
-            test.addScreenCaptureFromPath(absolutePath);
-            
+           BaseClass. test.get().fail("Test Failed: " + name);
+           BaseClass. test.get().addScreenCaptureFromPath(absolutePath);
             System.out.println("Screenshot attached to report from: " + absolutePath);
         } catch (Exception e) {
             System.err.println("Failed to capture screenshot: " + e.getMessage());
@@ -281,12 +283,12 @@ public class AllUtilityFunctions {
 
     // print statement in console
 
-    public static void log(String msg) {
+    public  void log(String msg) {
         System.out.println(msg);
     }
     
     //popup handling
-    public static void handlePopup(WebDriver driver, String frameName, By closeLocator) {
+    public  void handlePopup(WebDriver driver, String frameName, By closeLocator) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 

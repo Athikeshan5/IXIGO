@@ -2,13 +2,23 @@ Feature: Complete Hotel Booking Journey
 
 Scenario: To verify hotel search and booking flow
 
+When click the search destination field and enter the destination 
+And select check-in date and check-out date 
+And select rooms and adults 
+And click the search button
+
+
+
 #Given open the browser
 #And Navigate to url "https://www.ixigo.com/"
 #Given click the hotel module  
-When click the search destination field and enter the destination "Taj Coromandel chennai"  
-And select check-in date as 2 days from today and check-out date as 5 days from today 
-And select "4 Adults" and "2 Room" 
-And click the search button 
+
+#When user enters hotel booking details
+
+#When click the search destination field and enter the destination "Taj Coromandel chennai"  
+#And select check-in date as 2 days from today and check-out date as 5 days from today 
+#And select "4 Adults" and "2 Room" 
+#And click the search button 
 
 
 #When click on the hotel

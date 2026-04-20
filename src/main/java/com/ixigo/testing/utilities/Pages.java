@@ -1,8 +1,10 @@
 package com.ixigo.testing.utilities;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.v141.page.Page;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ixigo.testingPages.AddHotelToWishListPage;
 import com.ixigo.testingPages.HotelBookingPage;
 
 //import com.ixigo.testing.pages.HomePage;
@@ -17,29 +19,16 @@ import com.ixigo.testingPages.HotelBookingPage;
 public class Pages {
 	
 	
-	public static HotelBookingPage HBP;
-	
-	
-	public static void loadAllPages(WebDriver driver) {
-		HBP = PageFactory.initElements(driver, HotelBookingPage.class);
 	
 
-//	public static HomePage hp;
-//	public static TrainsPage tp;
-//	public static PNRStatusPage pnrs;
-//	public static PNRValidationPage pnrv;
-//	public static TrainRuningStatusPage trs;
-//	public static RunningStatusPage rs;
-//	public static TrainSeatAvailabilityPage ts;
-//	public static SeatAvailabilityFilterPage saf;
-//	public static void allPages(WebDriver driver) {
-//		hp=PageFactory.initElements(driver, HomePage.class);
-//		tp=PageFactory.initElements(driver, TrainsPage.class);
-//		pnrs=PageFactory.initElements(driver, PNRStatusPage.class);
-//		pnrv=PageFactory.initElements(driver, PNRValidationPage.class);
-//		trs=PageFactory.initElements(driver, TrainRuningStatusPage.class);
-//		rs=PageFactory.initElements(driver, RunningStatusPage.class);
-//	    ts=PageFactory.initElements(driver, TrainSeatAvailabilityPage.class);
-//	    saf=PageFactory.initElements(driver, SeatAvailabilityFilterPage.class);
+	
+	public static ThreadLocal<HotelBookingPage> HBP = new ThreadLocal<>();
+    public static ThreadLocal<AddHotelToWishListPage> WL = new ThreadLocal<>();
+    
+    public static void allPages(WebDriver driver) {
+        // Use .set() to store a unique instance for the current thread
+    	HBP .set(PageFactory.initElements(driver, HotelBookingPage.class));
+		WL .set(PageFactory.initElements(driver, AddHotelToWishListPage.class));
+
 	}
 }
