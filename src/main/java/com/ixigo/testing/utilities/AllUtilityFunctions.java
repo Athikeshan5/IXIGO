@@ -170,12 +170,14 @@ public class AllUtilityFunctions {
 
     //  WINDOW 
 
-    public  void switchToWindowByTitle(WebDriver driver, String title) {
+    public  void switchToWindowByTitle(WebDriver driver) {
+    	String parent=driver.getWindowHandle();
         for (String win : driver.getWindowHandles()) {
-            driver.switchTo().window(win);
-            if (driver.getTitle().contains(title)) {
-                break;
+           
+            if (parent.contains(win)) {
+                continue;
             }
+            driver.switchTo().window(win);
         }
     }
 

@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Apr 20 09:55:34 IST 2026</td>
+<td>Started on:</td><td>Wed Apr 22 09:29:24 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>29 seconds (29209 ms)</td>
+<tr><td>Total time:</td><td>34 seconds (34196 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,10 +76,29 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.ixigo.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.ixigo.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify hotel search and booking flow", "Complete Hotel Booking Journey"</td>
-<td></td>
-<td>28</td>
-<td>com.ixigo.testing.testrunner.RunnerIO@9597028</td></tr>
+<td title='com.ixigo.testing.testrunner.RunnerIO.setUpClass()'><b>setUpClass</b><br>Test class: com.ixigo.testing.testrunner.RunnerIO<br>Parameters: org.testng.TestRunner@7e0b9178</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h5[.=&apos;Verify Your Mobile Number&apos;] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.39.0&apos;, revision: &apos;126f156aee&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;25.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.102, chrome: {chromedriverVersion: 147.0.7727.57 (b4f28b5637d0..., userDataDir: C:\selenium-profile-a46cfd5...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50929}, goog:processID: 39064, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50929/devtoo..., se:cdpVersion: 147.0.7727.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308f135e4bce42cc3e0e76e65c7c1c62
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.ixigo.testing.stepdefinition.Hook.oneTimeLogin(Hook.java:59)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2014838114", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2014838114'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h5[.=&apos;Verify Your Mobile Number&apos;] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.39.0&apos;, revision: &apos;126f156aee&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;25.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.102, chrome: {chromedriverVersion: 147.0.7727.57 (b4f28b5637d0..., userDataDir: C:\selenium-profile-a46cfd5...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50929}, goog:processID: 39064, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50929/devtoo..., se:cdpVersion: 147.0.7727.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308f135e4bce42cc3e0e76e65c7c1c62
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.ixigo.testing.stepdefinition.Hook.oneTimeLogin(Hook.java:59)
+</pre></div></td>
+<td>34</td>
+<td>com.ixigo.testing.testrunner.RunnerIO@6c64cb25</td></tr>
 </table><p>
 </body>
 </html>

@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.testng.asserts.SoftAssert;
+
 import com.ixigo.testing.utilities.AllUtilityFunctions;
 import com.ixigo.testing.utilities.BaseClass;
 import com.ixigo.testing.utilities.Pages;
@@ -17,26 +19,53 @@ public class HotelBooking  extends BaseClass{
 @When("click the search destination field and enter the destination")
 public void click_the_search_destination_field_and_enter_the_destination() {
 
-    Pages.HBP.get().enterDestination("chennai");
+    Pages.HBP.get().enterDestination("FabHotel Gateway");
 }
 @When("select check-in date and check-out date")
 public void select_check_in_date_and_check_out_date() {
 
     Pages.HBP.get().clickCheckInDate("May", "21");
-    Pages.HBP.get().clickCheckInDate("July","25");
+    Pages.HBP.get().clickCheckInDate("May","25");
 
 }
 @When("select rooms and adults")
 public void select_rooms_and_adults() {
 
-Pages.HBP.get().booking("2", "3","0");;
+Pages.HBP.get().booking("1", "1","0");;
 }
 
 @When("click the search button")
 public void click_the_search_button() {
     Pages.HBP.get().clickSearch();
 }
-
+@When("click the hotel book now")
+public void click_the_hotel_book_now() {
+    Pages.HBP.get().closePopupIfPresent();
+    Pages.LHP.get().hotel("Grand Continent Brookefield - A Sarovar Portico Alliliate Hotel");
+}
+@When("click the reserve button")
+public void click_the_reserve_button() {
+   
+    Pages.RP.get().reserve();
+    Pages.HBP.get().closePopupIfPresent();
+    
+}
+@When("add the guest details")
+public void add_the_guest_details() {
+	
+}
+@When("click the payment")
+public void click_the_payment() {
+    // Write code here that turns the phrase above into concrete actions
+    
+}
+@Then("verify the payment page")
+public void verify_the_payment_page() {
+    // Write code here that turns the phrase above into concrete actions
+   SoftAssert sa=new SoftAssert();
+   String actual=Pages.RP.get().verify();
+   sa.assertTrue(actual.contains("Reserve"));
+}
 
 	
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="methods" thread-count="4">
+     <listeners>
+        <!-- Tells TestNG to pick up @AfterSuite from ReportManager -->
+        <listener class-name="com.ixigo.testing.utilities.ReportManager"/>
+    </listeners>
+  <test name="Cucumber Tests">
+    <classes>
+      <class name="com.ixigo.testing.testrunner.RunnerIO"/>
+    </classes>
+  </test>
+</suite>
