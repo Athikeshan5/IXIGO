@@ -10,4 +10,4 @@ And enter the train name
 And click the check live runing train 
 Then verify the live train page 
 |verifyPage|
-|Frequently Asked Questions (FAQs)|
+|DOWNLOAD|

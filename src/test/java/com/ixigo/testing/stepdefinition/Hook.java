@@ -1,81 +1,67 @@
 package com.ixigo.testing.stepdefinition;
 
-import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.*;
 
-import io.cucumber.java.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 
-import com.ixigo.testing.utilities.AllUtilityFunctions;
-import com.ixigo.testing.utilities.BaseClass;
-import com.ixigo.testing.utilities.Pages;
+import com.ixigo.testing.utilities.*;
 
-public class Hook extends AllUtilityFunctions{
+public class Hook {
 
     public BaseClass b;
+    AllUtilityFunctions util = new AllUtilityFunctions();
 
     public Hook(BaseClass b) {
         this.b = b;
     }
 
     @Before
-    public void loginapp(Scenario scenario) throws IOException {
+    public void setup(Scenario scenario) throws Exception {
 
-        //  Create test in Extent Report (IMPORTANT)
-        createTest(scenario.getName());
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
 
-        String browser = AllUtilityFunctions.getPropertyValue("browser");
+        b.setDriver(new ChromeDriver(options));
 
-        //  Launch browser
-        if (browser.equalsIgnoreCase("chrome")) {
-            b.driver = new ChromeDriver();
-        } else if (browser.equalsIgnoreCase("edge")) {
-            b.driver = new EdgeDriver();
-        } else if (browser.equalsIgnoreCase("firefox")) {
-            b.driver = new FirefoxDriver();
-        }
+        // ✅ Store driver by scenario ID — listener reads this AFTER @After
+        BaseClass.driverStore.put(scenario.getId(), b.getDriver());
+        System.out.println("[Hook] Driver stored: " + scenario.getId());
 
-        //  Initialize pages
-        Pages.allPages(b.driver);
+        util.maximizeBrowser(b.getDriver());
 
-        //  Open application
-        AllUtilityFunctions.openUrl(b.driver, AllUtilityFunctions.getPropertyValue("url"));
+        String url = util.getPropertyValue("url");
+        util.openUrl(b.getDriver(), url);
 
-        //  Maximize browser
-        AllUtilityFunctions.maximizeBrowser(b.driver);
+        SessionManager.manageSession(b.getDriver());
+        Pages.allPages(b.getDriver());
 
-        //  Handle popup safely
-        AllUtilityFunctions.handlePopup(b.driver, "wiz-iframe-intent", By.id("closeButton"));
-
-        
+        WebDriverWait wait = new WebDriverWait(b.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")))
+            .sendKeys(Keys.ESCAPE);
     }
 
-    
-
-	@After
+    @After
     public void tearDown(Scenario scenario) {
 
         String name = scenario.getName().replaceAll("[^a-zA-Z0-9]", "_");
 
         if (scenario.isFailed()) {
-
-            //  Failure → screenshot + report
-            AllUtilityFunctions.captureFailure(b.driver, name);
-
+            util.fail("Test Failed: " + name);
         } else {
-            //  Pass log
-            AllUtilityFunctions.pass("Test Passed: " + name);
+            util.pass("Test Passed: " + name);
         }
 
-        //  Close browser
-        //b.driver.quit();
-
-        //  Save report
-        AllUtilityFunctions.getReport().flush();
+        // ✅ DO NOT quit here — listener fires after @After and needs the driver
+        // ✅ DO NOT remove from driverStore — listener removes it after screenshot
+        // Just clear the ThreadLocal
+        b.unload();
     }
 }
