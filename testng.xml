@@ -1,0 +1,15 @@
+
+<suite name="IxigoSuite" parallel="false">
+
+    <!-- ✅ Only TestNG listeners here — ReportManager implements ISuiteListener -->
+    <listeners>
+        <listener class-name="com.ixigo.testing.utilities.ReportManager"/>
+    </listeners>
+
+    <test name="IxigoTest">
+        <classes>
+            <class name="com.ixigo.testing.testrunner.RunnerIO"/>
+        </classes>
+    </test>
+
+</suite>
