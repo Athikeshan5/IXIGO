@@ -232,11 +232,11 @@ Extent Reports generate a detailed HTML report at `Reports/Ixigo_extent.html` wi
 ## 👥 Team
 
 Developed as part of the **V&V Automation Testing (Selenium + Java)** training program.
-**Athikeshan V**
-**Devottham D K**
-**Harini Angel A**
-**Kanimozhi T**
-**Kaarthiga G**
+- **Athikeshan V**
+- **Devottham D K**
+- **Harini Angel A**
+- **Kanimozhi T**
+- **Kaarthiga G**
 ---
 
 ## 📄 License
