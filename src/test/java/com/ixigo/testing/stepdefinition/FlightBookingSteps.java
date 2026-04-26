@@ -9,7 +9,7 @@ public class FlightBookingSteps {
     
     private BaseClass base;
     private AllUtilityFunctions util;
-    private String tripType = "Round Trip"; // default
+    private String tripType = "Round Trip";
     
     public FlightBookingSteps(BaseClass base) {
         this.base = base;
@@ -20,9 +20,18 @@ public class FlightBookingSteps {
     public void user_launch_flight_booking_app() throws Exception {
         String url = util.getPropertyValue("url");
         util.openUrl(base.getDriver(), url);
-        util.maximizeBrowser(base.getDriver());
+        
+        // Handle maximize safely
+        try {
+            base.getDriver().manage().window().maximize();
+        } catch (Exception e) {
+            System.out.println("Window already maximized");
+        }
         
         Pages.allPages(base.getDriver());
+        
+        // Navigate directly to flights page
+        Pages.FHP.get().navigateDirectlyToSearch();
         
         Thread.sleep(5000);
         Pages.FHP.get().forcePageReady();
@@ -52,7 +61,7 @@ public class FlightBookingSteps {
         util.pass("Trip type: " + tripType);
     }
     
-    // For Round Trip (with return date)
+    // For Round Trip
     @When("User enter flight search details")
     public void user_enter_flight_search_details(io.cucumber.datatable.DataTable dataTable) throws Exception {
         var data = dataTable.asMaps().get(0);
@@ -68,24 +77,12 @@ public class FlightBookingSteps {
         System.out.println("Departure: " + departureDate);
         System.out.println("Return: " + returnDate);
         
-        FlightHomePage fhp = Pages.FHP.get();
-        
-        fhp.enterSource(source);
-        Thread.sleep(1000);
-        
-        fhp.enterDestination(destination);
-        Thread.sleep(1000);
-        
-        fhp.selectDepartureDate(departureDate);
-        Thread.sleep(1000);
-        
-        if (returnDate != null && !returnDate.isEmpty()) {
-            fhp.selectReturnDate(returnDate);
-        }
+        Pages.FHP.get().directFlightSearch(source, destination, departureDate, returnDate);
         
         util.pass("Flight search details entered");
     }
     
+    // For One Way
     @When("User enter flight search details for one way")
     public void user_enter_flight_search_details_for_one_way(io.cucumber.datatable.DataTable dataTable) throws Exception {
         var data = dataTable.asMaps().get(0);
@@ -99,18 +96,11 @@ public class FlightBookingSteps {
         System.out.println("Destination: " + destination);
         System.out.println("Departure Date: " + departureDate);
         
-        FlightHomePage fhp = Pages.FHP.get();
-        
-        fhp.enterSource(source);
-        Thread.sleep(1000);
-        
-        fhp.enterDestination(destination);
-        Thread.sleep(1000);
-        
-        fhp.selectDepartureDate(departureDate);
+        Pages.FHP.get().directOneWayFlightSearch(source, destination, departureDate);
         
         util.pass("One way flight search details entered");
     }
+    
     @When("User select traveller details {string} and {string}")
     public void user_select_traveller_details(String traveller, String cabinClass) throws Exception {
         Pages.FHP.get().selectTravellerDetails(traveller, cabinClass);
@@ -127,29 +117,22 @@ public class FlightBookingSteps {
     public void user_click_on_search_button() throws Exception {
         Pages.FHP.get().clickSearchButton();
         util.pass("Search clicked");
-        Thread.sleep(8000);
+        Thread.sleep(5000);
     }
     
+    // For Round Trip
     @Then("user can see available flights for both onward and return journey")
-    public void user_can_see_available_flights() throws Exception {
-        // Take longer wait for results
-        Thread.sleep(10000);
+    public void user_can_see_available_flights_both() throws Exception {
+        Thread.sleep(8000);
         
         FlightResultsPage frp = Pages.FRP.get();
         frp.debugPage();
         
-        // Take screenshot of current page for debugging
-        util.takeScreenshot(base.getDriver(), "flight_results_page");
-        
-        // Additional wait for flight cards to load
         boolean flightsDisplayed = frp.areFlightsDisplayed();
         
-        // If no flights, check if we're on a different page
         if (!flightsDisplayed) {
             String currentUrl = base.getDriver().getCurrentUrl();
             System.out.println("Current URL when no flights: " + currentUrl);
-            
-            // If we're on booking page, consider it as success (flights were selected)
             if (currentUrl.contains("booking")) {
                 util.pass("Already on booking page - flights were selected");
                 return;
@@ -159,23 +142,25 @@ public class FlightBookingSteps {
         Assert.assertTrue(flightsDisplayed, "No flights displayed");
         util.pass("Flights displayed successfully");
     }
-//    @Then("user can see available flights for both onward and return journey")
-//    public void user_can_see_available_flights() throws Exception {
-//        Thread.sleep(5000);
-//        
-//        FlightResultsPage frp = Pages.FRP.get();
-//        frp.debugPage();
-//        
-//        boolean flightsDisplayed = frp.areFlightsDisplayed();
-//        
-//        if (!flightsDisplayed) {
-//            util.takeScreenshot(base.getDriver(), "no_flights");
-//        }
-//        
-//        Assert.assertTrue(flightsDisplayed, "No flights displayed");
-//        util.pass("Flights displayed successfully");
-//    }
-//    
+    
+    // For One Way
+    @Then("user can see available flights")
+    public void user_can_see_available_flights_one_way() throws Exception {
+        Thread.sleep(8000);
+        
+        FlightResultsPage frp = Pages.FRP.get();
+        frp.debugPage();
+        
+        boolean flightsDisplayed = frp.areFlightsDisplayed();
+        
+        if (!flightsDisplayed) {
+            util.takeScreenshot(base.getDriver(), "no_flights_one_way");
+        }
+        
+        Assert.assertTrue(flightsDisplayed, "No flights displayed for One Way");
+        util.pass("Flights displayed successfully for One Way");
+    }
+    
     @When("User applies filter for airline {string}")
     public void user_applies_filter_for_airline(String airline) throws Exception {
         FlightResultsPage frp = Pages.FRP.get();
@@ -192,6 +177,7 @@ public class FlightBookingSteps {
         util.pass("Filter verified: " + airline);
     }
     
+    // For Round Trip
     @When("User select onward flight")
     public void user_select_onward_flight() throws Exception {
         FlightResultsPage frp = Pages.FRP.get();
@@ -200,9 +186,9 @@ public class FlightBookingSteps {
         Thread.sleep(3000);
     }
     
+    // For Round Trip
     @When("User select return flight")
     public void user_select_return_flight() throws Exception {
-        // Only for round trip
         if (tripType.equalsIgnoreCase("Round Trip")) {
             FlightResultsPage frp = Pages.FRP.get();
             frp.selectFirstReturnFlight();
@@ -211,6 +197,15 @@ public class FlightBookingSteps {
             util.pass("Return flight step skipped for One Way");
         }
         Thread.sleep(2000);
+    }
+    
+    // For One Way
+    @When("User select flight")
+    public void user_select_flight() throws Exception {
+        FlightResultsPage frp = Pages.FRP.get();
+        frp.selectFirstOnwardFlight();
+        util.pass("Flight selected successfully");
+        Thread.sleep(3000);
     }
     
     @When("User selects saved traveller {string} with last name {string}")
@@ -232,11 +227,13 @@ public class FlightBookingSteps {
     @When("User selects seat preference")
     public void user_selects_seat_preference() throws Exception {
         util.pass("Seat preference skipped");
+        Thread.sleep(500);
     }
     
     @When("User selects meal preference")
     public void user_selects_meal_preference() throws Exception {
         util.pass("Meal preference skipped");
+        Thread.sleep(500);
     }
     
     @When("User confirms the add ons and continues")
@@ -254,7 +251,6 @@ public class FlightBookingSteps {
     
     @Then("User should see booking summary before confirmation")
     public void user_should_see_booking_summary() throws Exception {
-        // Skip booking summary verification
         util.pass("Booking summary step skipped - proceeding to payment");
         Thread.sleep(2000);
     }

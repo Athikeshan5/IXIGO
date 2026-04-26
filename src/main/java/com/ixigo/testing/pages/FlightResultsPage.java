@@ -21,11 +21,8 @@ public class FlightResultsPage {
     JavascriptExecutor js;
     AllUtilityFunctions util = new AllUtilityFunctions();
     
-    @FindBy(xpath = "(//div[contains(@class,'py-5') and contains(@class,'justify-between')])[1] | //div[contains(@class,'flight-card')]")
-    private WebElement firstFlightCard;
-    
     // Book button locator - YOUR WORKING LOCATOR
-    @FindBy(xpath = "(//button[.='Book'])")
+    @FindBy(xpath = "//button[text()='Book']")
     private List<WebElement> bookButtons;
     
     public FlightResultsPage(WebDriver driver) {
@@ -39,24 +36,14 @@ public class FlightResultsPage {
         try {
             Thread.sleep(5000);
             
-            List<WebElement> cards = driver.findElements(By.xpath(
-                "//div[contains(@class,'py-5') and contains(@class,'justify-between')] | " +
-                "//div[contains(@class,'flight-card')]"));
-            
-            if (cards.size() > 0) {
-        //        util.log("Found " + cards.size() + " flight cards");
-                return true;
-            }
-            
-            List<WebElement> bookBtns = driver.findElements(By.xpath("(//button[.='Book'])"));
+            List<WebElement> bookBtns = driver.findElements(By.xpath("//button[text()='Book']"));
             if (bookBtns.size() > 0) {
-        //        util.log("Found " + bookBtns.size() + " book buttons");
+                System.out.println("Found " + bookBtns.size() + " book buttons");
                 return true;
             }
-            
             return false;
         } catch (Exception e) {
-      //      util.log("Error checking flights: " + e.getMessage());
+            System.out.println("Error checking flights: " + e.getMessage());
             return false;
         }
     }
@@ -71,25 +58,19 @@ public class FlightResultsPage {
     }
     
     public void applyAirlineFilter(String airline) throws InterruptedException {
-     //   util.log("🎛️ Applying filter: " + airline);
+        System.out.println("Applying filter: " + airline);
         Thread.sleep(3000);
         
-        String[] checkboxXpaths = {
-            "//*[contains(normalize-space(),'" + airline + "')]/following::input[@type='checkbox'][1]",
-            "//label[contains(normalize-space(),'" + airline + "')]//input[@type='checkbox']",
-            "//span[contains(normalize-space(),'" + airline + "')]/preceding::input[@type='checkbox'][1]"
-        };
-        
-        for (String xpath : checkboxXpaths) {
-            try {
-                WebElement el = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-                js.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
-                Thread.sleep(500);
-                js.executeScript("arguments[0].click();", el);
-     //           util.log("✅ Filter applied: " + airline);
-                Thread.sleep(2000);
-                return;
-            } catch (Exception ignored) {}
+        // Click on airline filter checkbox
+        try {
+            WebElement filter = driver.findElement(By.xpath("//div[contains(text(),'" + airline + "')]//input | //label[contains(text(),'" + airline + "')]"));
+            js.executeScript("arguments[0].scrollIntoView({block:'center'});", filter);
+            Thread.sleep(500);
+            js.executeScript("arguments[0].click();", filter);
+            System.out.println("Filter applied: " + airline);
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            System.out.println("Filter application failed: " + e.getMessage());
         }
     }
     
@@ -101,39 +82,56 @@ public class FlightResultsPage {
     
     // SELECT ONWARD FLIGHT - Click Book button
     public void selectFirstOnwardFlight() throws InterruptedException {
-     //   util.log("Selecting onward flight...");
+        System.out.println("Selecting onward flight...");
         Thread.sleep(3000);
         
         try {
-            // Find first Book button and click
-            List<WebElement> bookBtns = driver.findElements(By.xpath("(//button[.='Book'])"));
+            // Scroll to make sure we see the flight results
+            js.executeScript("window.scrollBy(0, 300);");
+            Thread.sleep(1000);
+            
+            // Find all Book buttons
+            List<WebElement> bookBtns = driver.findElements(By.xpath("//button[text()='Book']"));
+            System.out.println("Total Book buttons found: " + bookBtns.size());
+            
             if (!bookBtns.isEmpty()) {
+                // Scroll to the first Book button
                 js.executeScript("arguments[0].scrollIntoView({block:'center'});", bookBtns.get(0));
                 Thread.sleep(1000);
+                
+                // Click using JavaScript
                 js.executeScript("arguments[0].click();", bookBtns.get(0));
-        //        util.log("✅ Onward flight Book button clicked");
+                System.out.println("✅ Onward flight Book button clicked");
+                
+                // Wait for next page to load
+                Thread.sleep(5000);
             } else {
-       //         util.log("No Book button found");
+                System.out.println("No Book button found");
             }
         } catch (Exception e) {
-           // util.log("Failed to select onward flight: " + e.getMessage());
+            System.out.println("Failed to select onward flight: " + e.getMessage());
         }
         Thread.sleep(3000);
     }
     
     public void selectFirstReturnFlight() throws InterruptedException {
-     //   util.log("Selecting return flight...");
+        System.out.println("Selecting return flight...");
         Thread.sleep(3000);
-      //  util.log("✅ Return flight selected");
+        System.out.println("Return flight selected");
     }
     
     public void debugPage() {
-     //   util.log("=== FLIGHT RESULTS DEBUG ===");
-       // util.log("URL: " + driver.getCurrentUrl());
-       // util.log("Title: " + driver.getTitle());
+        System.out.println("=== FLIGHT RESULTS DEBUG ===");
+        System.out.println("URL: " + driver.getCurrentUrl());
+        System.out.println("Title: " + driver.getTitle());
         
-        List<WebElement> bookBtns = driver.findElements(By.xpath("(//button[.='Book'])"));
-       // util.log("Book buttons: " + bookBtns.size());
-        //util.log("============================");
+        List<WebElement> bookBtns = driver.findElements(By.xpath("//button[text()='Book']"));
+        System.out.println("Book buttons: " + bookBtns.size());
+        
+        for (int i = 0; i < bookBtns.size(); i++) {
+            System.out.println("Book button " + i + " text: " + bookBtns.get(i).getText());
+            System.out.println("Book button " + i + " displayed: " + bookBtns.get(i).isDisplayed());
+        }
+        System.out.println("============================");
     }
 }

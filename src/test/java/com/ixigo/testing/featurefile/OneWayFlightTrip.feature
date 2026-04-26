@@ -14,10 +14,10 @@ Scenario: Full end to end one way flight booking journey
   And User select traveller details "1 Adult" and "Economy"
   And User select special fare "Regular"
   And user click on search button
-  Then user can see available flights for both onward and return journey
+  Then user can see available flights
   When User applies filter for airline "IndiGo"
   Then Filtered flight result should be displayed correctly for "IndiGo"
-  When User select onward flight
+  When User select flight
   And User selects saved traveller "Angel" with last name "A"
   And User selects seat preference
   And User selects meal preference
