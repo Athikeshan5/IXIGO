@@ -1,0 +1,11 @@
+<suite name="IxigoTestSuite" parallel="methods" thread-count="2" verbose="1">
+<listeners>
+<!--  ReportManager flushes Extent Report once after ALL tests finish  -->
+<listener class-name="com.ixigo.testing.utilities.ReportManager"/>
+</listeners>
+<test name="IxigoTests">
+<classes>
+<class name="com.ixigo.testing.testrunner.RunnerIO"/>
+</classes>
+</test>
+</suite>

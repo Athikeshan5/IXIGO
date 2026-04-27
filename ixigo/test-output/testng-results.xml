@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="3" failed="3" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-27T07:35:34 IST" name="IxigoTestSuite" finished-at="2026-04-27T07:44:38 IST" duration-ms="544444">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2026-04-27T07:35:34 IST" name="IxigoTests" finished-at="2026-04-27T07:44:38 IST" duration-ms="544444">
+      <class name="com.ixigo.testing.testrunner.RunnerIO">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:34 IST" name="setUpClass" finished-at="2026-04-27T07:35:36 IST" duration-ms="1706" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@6bca7e0d]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:37:05 IST" duration-ms="88898" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search food using PNR"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Food Delivery in Train"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:43:31 IST" duration-ms="475373" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search train and proceed to booking"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Train Search by Name or Number"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:39:26 IST" duration-ms="230180" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Book train using station module and verify login popup"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Ixigo Station Booking Flow"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[LOGIN POPUP not shown. URL: https://www.ixigo.com/trains/12510/seat-availability]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: LOGIN POPUP not shown. URL: https://www.ixigo.com/trains/12510/seat-availability
+at org.testng.Assert.fail(Assert.java:110)
+at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:132)
+at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
+at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/station.feature:11)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:39:25 IST" duration-ms="229087" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate booking flow till login popup"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Vande Bharat Train Booking"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:44:38 IST" duration-ms="542527" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search train and proceed to booking"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Train Search by Name or Number"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Payment page (Contact Details) not shown. URL: https://www.ixigo.com/trains/12610/seat-availability]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Payment page (Contact Details) not shown. URL: https://www.ixigo.com/trains/12610/seat-availability
+at org.testng.Assert.fail(Assert.java:110)
+at com.ixigo.testing.stepdefinition.CommonSteps.handlePassengerAndPayment(CommonSteps.java:166)
+at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:126)
+at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
+at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/trainName.feature:13)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:40:18 IST" duration-ms="281923" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search train platform and proceed to booking"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Platform Locator"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[LOGIN POPUP not shown. URL: https://www.ixigo.com/search/result/train/MS/KKDI/30052026//1/0/0/0/all]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: LOGIN POPUP not shown. URL: https://www.ixigo.com/search/result/train/MS/KKDI/30052026//1/0/0/0/all
+at org.testng.Assert.fail(Assert.java:110)
+at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:132)
+at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
+at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/platform.feature:9)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:44:38 IST" name="tearDownClass" finished-at="2026-04-27T07:44:38 IST" duration-ms="116" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.ixigo.testing.testrunner.RunnerIO -->
+    </test> <!-- IxigoTests -->
+  </suite> <!-- IxigoTestSuite -->
+</testng-results>

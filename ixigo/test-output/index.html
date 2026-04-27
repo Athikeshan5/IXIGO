@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-IxigoTestSuite" class="navigator-link">
+              <span class="suite-name border-failed">IxigoTestSuite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-IxigoTestSuite" class="navigator-link ">
+                    <span>C:\Users\Our_Power\IxigoFinalCopy\ixigo\testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-IxigoTestSuite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-IxigoTestSuite" class="navigator-link ">
+                    <span>1 group</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-IxigoTestSuite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-IxigoTestSuite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-IxigoTestSuite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-IxigoTestSuite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">6 methods, 3 failed,   3 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-IxigoTestSuite" class="hide-methods failed suite-IxigoTestSuite"> (hide)</a> <!-- hide-methods failed suite-IxigoTestSuite -->
+                      <a href="#" panel-name="suite-IxigoTestSuite" class="show-methods failed suite-IxigoTestSuite"> (show)</a> <!-- show-methods failed suite-IxigoTestSuite -->
+                    </span>
+                    <div class="method-list-content failed suite-IxigoTestSuite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-IxigoTestSuite" title="com.ixigo.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Search train and proceed to booking&quot;, &quot;Train Search by Name or Number&quot;)">runScenario("Search train and proceed to booking", "Train Search by Name or Number")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-IxigoTestSuite" title="com.ixigo.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Search train platform and proceed to booking&quot;, &quot;Platform Locator&quot;)">runScenario("Search train platform and proceed to booking", "Platform Locator")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-IxigoTestSuite" title="com.ixigo.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Book train using station module and verify login popup&quot;, &quot;Ixigo Station Booking Flow&quot;)">runScenario("Book train using station module and verify login popup", "Ixigo Station Booking Flow")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-IxigoTestSuite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-IxigoTestSuite" class="hide-methods passed suite-IxigoTestSuite"> (hide)</a> <!-- hide-methods passed suite-IxigoTestSuite -->
+                      <a href="#" panel-name="suite-IxigoTestSuite" class="show-methods passed suite-IxigoTestSuite"> (show)</a> <!-- show-methods passed suite-IxigoTestSuite -->
+                    </span>
+                    <div class="method-list-content passed suite-IxigoTestSuite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-IxigoTestSuite" title="com.ixigo.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Validate booking flow till login popup&quot;, &quot;Vande Bharat Train Booking&quot;)">runScenario("Validate booking flow till login popup", "Vande Bharat Train Booking")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-IxigoTestSuite" title="com.ixigo.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Search food using PNR&quot;, &quot;Food Delivery in Train&quot;)">runScenario("Search food using PNR", "Food Delivery in Train")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-IxigoTestSuite" title="com.ixigo.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Search train and proceed to booking&quot;, &quot;Train Search by Name or Number&quot;)">runScenario("Search train and proceed to booking", "Train Search by Name or Number")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-IxigoTestSuite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-IxigoTestSuite" class="panel IxigoTestSuite">
+          <div class="suite-IxigoTestSuite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.ixigo.testing.testrunner.RunnerIO</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Search train and proceed to booking&quot;, &quot;Train Search by Name or Number&quot;)">
+                  </a> <!-- runScenario("Search train and proceed to booking", "Train Search by Name or Number") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Search train and proceed to booking","Train Search by Name or Number")</span>
+                  <div class="stack-trace">java.lang.AssertionError: Payment page (Contact Details) not shown. URL: https://www.ixigo.com/trains/12610/seat-availability
+	at com.ixigo.testing.stepdefinition.CommonSteps.handlePassengerAndPayment(CommonSteps.java:166)
+	at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:126)
+	at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
+	at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/trainName.feature:13)
+... Removed 1 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Search train platform and proceed to booking&quot;, &quot;Platform Locator&quot;)">
+                  </a> <!-- runScenario("Search train platform and proceed to booking", "Platform Locator") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Search train platform and proceed to booking","Platform Locator")</span>
+                  <div class="stack-trace">java.lang.AssertionError: LOGIN POPUP not shown. URL: https://www.ixigo.com/search/result/train/MS/KKDI/30052026//1/0/0/0/all
+	at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:132)
+	at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
+	at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/platform.feature:9)
+... Removed 1 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Book train using station module and verify login popup&quot;, &quot;Ixigo Station Booking Flow&quot;)">
+                  </a> <!-- runScenario("Book train using station module and verify login popup", "Ixigo Station Booking Flow") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Book train using station module and verify login popup","Ixigo Station Booking Flow")</span>
+                  <div class="stack-trace">java.lang.AssertionError: LOGIN POPUP not shown. URL: https://www.ixigo.com/trains/12510/seat-availability
+	at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:132)
+	at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
+	at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/station.feature:11)
+... Removed 1 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-IxigoTestSuite-class-failed -->
+          <div class="suite-IxigoTestSuite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.ixigo.testing.testrunner.RunnerIO</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Validate booking flow till login popup&quot;, &quot;Vande Bharat Train Booking&quot;)">
+                  </a> <!-- runScenario("Validate booking flow till login popup", "Vande Bharat Train Booking") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Validate booking flow till login popup","Vande Bharat Train Booking")</span>
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Search food using PNR&quot;, &quot;Food Delivery in Train&quot;)">
+                  </a> <!-- runScenario("Search food using PNR", "Food Delivery in Train") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Search food using PNR","Food Delivery in Train")</span>
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Search train and proceed to booking&quot;, &quot;Train Search by Name or Number&quot;)">
+                  </a> <!-- runScenario("Search train and proceed to booking", "Train Search by Name or Number") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Search train and proceed to booking","Train Search by Name or Number")</span>
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-IxigoTestSuite-class-passed -->
+        </div> <!-- panel IxigoTestSuite -->
+        <div panel-name="test-xml-IxigoTestSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\Our_Power\IxigoFinalCopy\ixigo\testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite thread-count=&quot;2&quot; parallel=&quot;methods&quot; name=&quot;IxigoTestSuite&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.ixigo.testing.utilities.ReportManager&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test thread-count=&quot;2&quot; parallel=&quot;methods&quot; name=&quot;IxigoTests&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.ixigo.testing.testrunner.RunnerIO&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- IxigoTests --&gt;
+&lt;/suite&gt; &lt;!-- IxigoTestSuite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-IxigoTestSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for IxigoTestSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">IxigoTests (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-IxigoTestSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for IxigoTestSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">cucumber</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">runScenario</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-IxigoTestSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for IxigoTestSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_IxigoTestSuite');
+function tableData_IxigoTestSuite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(6);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'runScenario')
+data.setCell(0, 2, 'com.ixigo.testing.testrunner.RunnerIO')
+data.setCell(0, 3, 542527);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'runScenario')
+data.setCell(1, 2, 'com.ixigo.testing.testrunner.RunnerIO')
+data.setCell(1, 3, 475373);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'runScenario')
+data.setCell(2, 2, 'com.ixigo.testing.testrunner.RunnerIO')
+data.setCell(2, 3, 281923);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'runScenario')
+data.setCell(3, 2, 'com.ixigo.testing.testrunner.RunnerIO')
+data.setCell(3, 3, 230180);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'runScenario')
+data.setCell(4, 2, 'com.ixigo.testing.testrunner.RunnerIO')
+data.setCell(4, 3, 229087);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'runScenario')
+data.setCell(5, 2, 'com.ixigo.testing.testrunner.RunnerIO')
+data.setCell(5, 3, 88898);
+window.suiteTableData['IxigoTestSuite']= { tableData: data, tableDiv: 'times-div-IxigoTestSuite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 30 minutes</span>
+              <div id="times-div-IxigoTestSuite">
+              </div> <!-- times-div-IxigoTestSuite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-IxigoTestSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for IxigoTestSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-IxigoTestSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-IxigoTestSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.ixigo.testing.testrunner.RunnerIO</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setUpClass(org.testng.TestRunner@6bca7e0d)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Search food using PNR", "Food Delivery in Train")</span>
+                <span class="method-start">1754 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Search train and proceed to booking", "Train Search by Name or Number")</span>
+                <span class="method-start">1754 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runScenario("Book train using station module and verify login popup", "Ixigo Station Booking Flow")</span>
+                <span class="method-start">1754 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Validate booking flow till login popup", "Vande Bharat Train Booking")</span>
+                <span class="method-start">1755 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runScenario("Search train and proceed to booking", "Train Search by Name or Number")</span>
+                <span class="method-start">1755 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runScenario("Search train platform and proceed to booking", "Platform Locator")</span>
+                <span class="method-start">1755 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDownClass</span>
+                <span class="method-start">544286 ms</span>
+              </div> <!-- configuration-class after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>
