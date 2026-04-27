@@ -49,7 +49,7 @@ public class FlightTrackerSteps {
         
         // Excel file path
         String projectPath = System.getProperty("user.dir");
-        String path = projectPath + "/src/test/resources/Reader/testData/Flight Tracker.xlsx";
+        String path = projectPath + "/src/test/resources/Reader/testData_flight.xlsx";
         String sheet = "Flight Tracker";  // Your sheet name
         
         System.out.println("Reading Excel from: " + path);
