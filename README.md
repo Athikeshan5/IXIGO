@@ -104,6 +104,7 @@ IXIGO-Train-module-first/
 - **One-Way Flight Booking** — Search → Filter (Airline) → Select Flight → Add Traveller → Seat & Meal Preference → Payment
 - **Round Trip Flight Booking** — Search with return date → Select onward + return flights → Booking flow
 - **Flight Tracker** — Search flight status by airline + flight number (Excel data-driven)
+- **Negative Scenarios** - Select same city
 
 ### 🏨 Hotel Module
 - **Hotel Booking** — Search by destination + dates → Book → Guest Details → Payment
@@ -117,7 +118,7 @@ IXIGO-Train-module-first/
 - **Bus Filters** — Mandatory and optional (price) filters
 - **Seat Selection** — Select bus, choose seat, boarding/dropping point
 - **Passenger Details** — Fill details and proceed to payment
-- **TrackTicket**-Track the ticket
+- **TrackTicket** -Track the ticket
 
 ### 🚆 Train Module
 - **Seat Availability** — Check, filter, select seats, passenger details, payment
