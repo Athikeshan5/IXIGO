@@ -1,0 +1,7 @@
+<suite name="IxigoLoginSetup" verbose="1" thread-count="1">
+<test name="One-Time Login">
+<classes>
+<class name="com.ixigo.testing.login.LoginModule"/>
+</classes>
+</test>
+</suite>

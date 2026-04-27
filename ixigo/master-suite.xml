@@ -1,0 +1,17 @@
+<suite name="IxigoMasterSuite" verbose="1">
+
+<test name="LoginSetup">
+<classes>
+<class name="com.ixigo.testing.login.LoginModule"/>
+</classes>
+</test>
+
+<test name="IxigoTests">
+<listeners>
+<listener class-name="com.ixigo.testing.utilities.ReportManager"/>
+</listeners>
+<classes>
+<class name="com.ixigo.testing.testrunner.RunnerIO"/>
+</classes>
+</test>
+</suite>

@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="3" failed="3" skipped="0">
+<testng-results ignored="0" total="7" passed="5" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-27T07:35:34 IST" name="IxigoTestSuite" finished-at="2026-04-27T07:44:38 IST" duration-ms="544444">
+  <suite started-at="2026-04-27T08:44:01 IST" name="IxigoMasterSuite" finished-at="2026-04-27T08:48:26 IST" duration-ms="264805">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-04-27T07:35:34 IST" name="IxigoTests" finished-at="2026-04-27T07:44:38 IST" duration-ms="544444">
+    <test started-at="2026-04-27T08:44:01 IST" name="LoginSetup" finished-at="2026-04-27T08:46:16 IST" duration-ms="134133">
+      <class name="com.ixigo.testing.login.LoginModule">
+        <test-method signature="performLoginAndSaveCookies()[pri:0, instance:com.ixigo.testing.login.LoginModule@2d1ef81a]" started-at="2026-04-27T08:44:01 IST" name="performLoginAndSaveCookies" description="Perform one-time login and save cookies for all test modules" finished-at="2026-04-27T08:46:16 IST" duration-ms="134093" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performLoginAndSaveCookies -->
+      </class> <!-- com.ixigo.testing.login.LoginModule -->
+    </test> <!-- LoginSetup -->
+    <test started-at="2026-04-27T08:46:16 IST" name="IxigoTests" finished-at="2026-04-27T08:48:26 IST" duration-ms="130607">
       <class name="com.ixigo.testing.testrunner.RunnerIO">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:34 IST" name="setUpClass" finished-at="2026-04-27T07:35:36 IST" duration-ms="1706" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:46:16 IST" name="setUpClass" finished-at="2026-04-27T08:46:16 IST" duration-ms="592" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@6bca7e0d]]>
+                <![CDATA[org.testng.TestRunner@2b6a0ea9]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:37:05 IST" duration-ms="88898" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:46:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:47:05 IST" duration-ms="49178" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,7 +45,23 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:43:31 IST" duration-ms="475373" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:46:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:47:35 IST" duration-ms="78433" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Book train using station module and verify login popup"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Ixigo Station Booking Flow"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:46:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:48:06 IST" duration-ms="109727" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -53,36 +77,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:39:26 IST" duration-ms="230180" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Book train using station module and verify login popup"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Ixigo Station Booking Flow"]]>
-              </value>
-            </param>
-          </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[LOGIN POPUP not shown. URL: https://www.ixigo.com/trains/12510/seat-availability]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: LOGIN POPUP not shown. URL: https://www.ixigo.com/trains/12510/seat-availability
-at org.testng.Assert.fail(Assert.java:110)
-at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:132)
-at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
-at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/station.feature:11)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:39:25 IST" duration-ms="229087" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:46:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:48:26 IST" duration-ms="129937" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -98,7 +93,7 @@ at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixi
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:44:38 IST" duration-ms="542527" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:46:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:48:26 IST" duration-ms="129390" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -113,13 +108,12 @@ at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixi
           </params>
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Payment page (Contact Details) not shown. URL: https://www.ixigo.com/trains/12610/seat-availability]]>
+              <![CDATA[LOGIN POPUP not shown. URL: https://www.ixigo.com/trains/12610/seat-availability]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Payment page (Contact Details) not shown. URL: https://www.ixigo.com/trains/12610/seat-availability
+              <![CDATA[java.lang.AssertionError: LOGIN POPUP not shown. URL: https://www.ixigo.com/trains/12610/seat-availability
 at org.testng.Assert.fail(Assert.java:110)
-at com.ixigo.testing.stepdefinition.CommonSteps.handlePassengerAndPayment(CommonSteps.java:166)
-at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:126)
+at com.ixigo.testing.stepdefinition.CommonSteps.runFullPostBookFlow(CommonSteps.java:132)
 at com.ixigo.testing.stepdefinition.CommonSteps.verify_login_popup(CommonSteps.java:54)
 at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixigo/src/test/java/com/ixigo/testing/featurefile/trainName.feature:13)
 ]]>
@@ -128,7 +122,7 @@ at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixi
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:35:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T07:40:18 IST" duration-ms="281923" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:46:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:48:24 IST" duration-ms="127343" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -157,11 +151,11 @@ at ✽.User should see login popup(file:///C:/Users/Our_Power/IxigoFinalCopy/ixi
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@3d34d211]" started-at="2026-04-27T07:44:38 IST" name="tearDownClass" finished-at="2026-04-27T07:44:38 IST" duration-ms="116" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.ixigo.testing.testrunner.RunnerIO@7a675056]" started-at="2026-04-27T08:48:26 IST" name="tearDownClass" finished-at="2026-04-27T08:48:26 IST" duration-ms="64" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- com.ixigo.testing.testrunner.RunnerIO -->
     </test> <!-- IxigoTests -->
-  </suite> <!-- IxigoTestSuite -->
+  </suite> <!-- IxigoMasterSuite -->
 </testng-results>

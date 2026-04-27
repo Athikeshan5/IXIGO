@@ -18,34 +18,17 @@ import io.cucumber.java.Scenario;
 
 import com.ixigo.testing.utilities.AllUtilityFunctions;
 import com.ixigo.testing.utilities.BaseClass;
-
+import com.ixigo.testing.utilities.CookieManager;
 import com.ixigo.testing.utilities.Pages;
 
-/**
- * Hook — @Before and @After lifecycle for every Cucumber scenario.
- *
- * KEY FEATURES:
- *
- *  1. Cookie-based login (CookieManager)
- *     - First run  : enters mobile → waits 90s for OTP → saves cookies
- *     - Later runs : loads cookies → no OTP needed (already logged in)
- *     - If cookies expire : automatically falls back to manual OTP
- *
- *  2. Page load timeout = 5 minutes (prevents HttpTimeoutException)
- *
- *  3. wiz-iframe-intent popup dismissed after every page load
- *
- *  4. Extent Report: createTest() called per scenario for detailed logging
- *
- *  5. All teardown wrapped in try-catch (parallel-safe)
- */
+
 public class Hook extends AllUtilityFunctions {
 
     public BaseClass b;
     AllUtilityFunctions util = new AllUtilityFunctions();
 
-    // Mobile number used for login — change this to your number
-    private static final String MOBILE = "8667811326";
+    // Mobile number read from commonData.properties (mobileNumber=XXXXXXXXXX)
+    private final String MOBILE = util.getPropertyValue("mobileNumber");
 
     public Hook(BaseClass b) {
         this.b = b;
@@ -110,8 +93,8 @@ public class Hook extends AllUtilityFunctions {
         // Food module doesn't need login — skip for it
         String scenarioName = scenario.getName().toLowerCase();
         if (!scenarioName.contains("food")) {
-            //CookieManager cookieManager = new CookieManager(driver);
-            //cookieManager.loginWithCookiesOrManual(MOBILE);
+            CookieManager cookieManager = new CookieManager(driver);
+            cookieManager.loginWithCookiesOrManual(MOBILE);
 
             // After cookie login, navigate back to the correct starting URL
             try {
