@@ -8,23 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-/**
- * BookingFlowHandler — Complete post-BOOK flow for all 4 modules.
- *
- * KEY FIX: After clicking BOOK, ixigo sometimes redirects to a new URL
- * before showing the login popup. We now wait up to 40 seconds and also
- * watch for URL changes, not just element visibility.
- *
- * Locators confirmed from DevTools screenshots:
- *   Mobile input : span.c-phone-email-input-wrapper > input  (type=text, no placeholder)
- *   Login button : button.c-btn.u-link  (text = LOGIN)
- *   Name field   : input[data-testid="nameInput"]
- *   Age field    : input[data-testid="ageInput"]
- *   Gender       : input[type=radio][value=M][name=gender]
- *   Save         : button "Save Traveller"
- *   Pay          : button "Proceed To Pay"
- *   Payment page : element with text "Contact Details"
- */
 public class BookingFlowHandler {
 
     WebDriver driver;
@@ -39,8 +22,6 @@ public class BookingFlowHandler {
 
     
     // LOCATORS
-    
-    // Login popup heading
     By loginHeading = By.xpath(
         "//div[contains(@class,'ixigo-login')]"
         + " | //*[contains(text(),'Log in to ixigo')]"
@@ -105,9 +86,7 @@ public class BookingFlowHandler {
 
   
     // PUBLIC METHODS
-    
-
-     //STEP 1 — Wait for login popup.
+     //Wait for login popup.
      
     public boolean isLoginPopupVisible() {
         try {
@@ -124,7 +103,7 @@ public class BookingFlowHandler {
         }
     }
 
-     //STEP 2 — Enter mobile, click LOGIN wait 60 s for manual OTP.
+     // Enter mobile, click LOGIN.
     
     public void enterMobileAndWaitForOTP(String mobile) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -139,13 +118,12 @@ public class BookingFlowHandler {
             System.out.println("Mobile entered: " + mobile);
             sleep(800);
 
-            // Click LOGIN — use JS click as primary
             try {
                 WebElement btn = wait.until(
                     ExpectedConditions.presenceOfElementLocated(loginBtn));
                 js.executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
                 sleep(300);
-                js.executeScript("arguments[0].click();", btn); // JS click
+                js.executeScript("arguments[0].click();", btn); 
                 System.out.println("LOGIN clicked via JS");
             } catch (Exception e) {
                 
@@ -153,7 +131,7 @@ public class BookingFlowHandler {
                 System.out.println("Pressed ENTER to submit (LOGIN btn not found)");
             }
 
-            // 60-second manual OTP window
+            // 60-second OTP window
             System.out.println("You have 60 seconds to enter the OTP manually...");
             for (int i = 60; i > 0; i -= 10) {
                 System.out.println(" Time: " + i + "s remaining...");
@@ -167,7 +145,7 @@ public class BookingFlowHandler {
     }
 
     
-     //STEP 3+4 — Click Add New Traveller, fill modal, Save Traveller, Proceed To Pay.
+     //Click Add New Traveller, fill modal, Save Traveller, Proceed To Pay.
      
     public void fillTravellerAndProceed(String fullName, String age) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -272,7 +250,7 @@ public class BookingFlowHandler {
     }
 
     
-     //STEP 5 — Assert Contact Details on payment page.
+     //Assert Contact Details on payment page.
      
     public boolean isPaymentPageDisplayed() {
         try {

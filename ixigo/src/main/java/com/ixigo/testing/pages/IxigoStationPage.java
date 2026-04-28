@@ -13,7 +13,7 @@ import java.util.List;
 
 public class IxigoStationPage {
 
-    // ── @FindBy locators (PageFactory pattern) ────────────────────────────────
+    // locators
 
     @FindBy(xpath = "//a[@href='/train-stations']")
     private WebElement searchByStation;
@@ -27,7 +27,7 @@ public class IxigoStationPage {
     @FindBy(xpath = "//a[contains(text(),'Book Now')]")
     private WebElement bookNowBtn;
 
-    // ── ACTIONS (driver passed as parameter, matching teammate pattern) ────────
+    // ACTIONS
 
     public void goToStationModule(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));

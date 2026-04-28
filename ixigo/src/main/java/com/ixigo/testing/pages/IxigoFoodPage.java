@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class IxigoFoodPage {
 
-    // ── @FindBy locators (PageFactory pattern) ────────────────────────────────
+    // locators 
 
     @FindBy(id = "pnr-input")
     private WebElement pnrField;
@@ -25,7 +25,7 @@ public class IxigoFoodPage {
     @FindBy(xpath = "//button[contains(text(),'Okay')]")
     private WebElement popupOk;
 
-    // ── ACTIONS (driver passed as parameter, matching teammate pattern) ────────
+    // ACTIONS 
 
     public void openFoodPageFromHome(WebDriver driver) {
         AllUtilityFunctions util = new AllUtilityFunctions(driver);

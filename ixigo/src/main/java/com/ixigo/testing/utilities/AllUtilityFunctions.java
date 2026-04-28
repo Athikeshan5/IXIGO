@@ -111,7 +111,7 @@ public class AllUtilityFunctions {
 
     public String takeScreenshot(WebDriver driver, String name) {
         File dir = new File("ScreenShot");
-        if (!dir.exists()) dir.mkdirs();                  // auto-create folder
+        if (!dir.exists()) dir.mkdirs();                 
 
         String path = "ScreenShot/" + name + ".png";
         try {

@@ -10,21 +10,7 @@ import com.ixigo.testing.pages.IxigoStationPage;
 import com.ixigo.testing.pages.IxigoTrainNamePage;
 import com.ixigo.testing.pages.IxigoVandeBharatPage;
 
-/**
- * Pages — thread-safe registry of Page Object instances.
- *
- * WHY ThreadLocal here?
- *   In parallel mode, Thread-1 and Thread-2 both call Pages.allPages().
- *   Without ThreadLocal, Thread-2's call would overwrite the static field
- *   that Thread-1 is actively using — causing NullPointerExceptions or
- *   Thread-1 suddenly operating on Thread-2's browser window.
- *
- *   ThreadLocal<T> gives each thread its own independent copy of the field.
- *
- * HOW to use in step definitions:
- *   Pages.foodPage.get().enterPNR(driver, pnr);
- *   Pages.platformPage.get().navigateToPlatformLocator(driver);
- */
+
 public class Pages {
 
     // One page object per thread, stored in ThreadLocal
@@ -35,11 +21,6 @@ public class Pages {
     public static final ThreadLocal<IxigoTrainNamePage>   trainNamePage = new ThreadLocal<>();
     public static final ThreadLocal<IxigoVandeBharatPage> vandePage     = new ThreadLocal<>();
 
-    /**
-     * Initialise all page objects for the current thread's WebDriver.
-     * Called once per scenario from Hook.@Before after the browser is launched.
-     * PageFactory.initElements wires up @FindBy annotations to the live driver.
-     */
     public static void allPages(WebDriver driver) {
         foodPage.set(PageFactory.initElements(driver, IxigoFoodPage.class));
         paymentPage.set(PageFactory.initElements(driver, IxigoPaymentPage.class));

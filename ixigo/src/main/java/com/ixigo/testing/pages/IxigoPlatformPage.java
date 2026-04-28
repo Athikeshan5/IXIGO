@@ -12,7 +12,7 @@ import java.util.List;
 
 public class IxigoPlatformPage {
 
-    // ── @FindBy locators (PageFactory pattern) ────────────────────────────────
+    // locators
 
     @FindBy(xpath = "//span[text()='Trains']")
     private WebElement trainsTab;
@@ -32,7 +32,7 @@ public class IxigoPlatformPage {
     @FindBy(xpath = "//div[contains(@class,'train-class-main') and contains(@class,'green')]")
     private WebElement avlClassBox;
 
-    // ── ACTIONS (driver passed as parameter, matching teammate pattern) ────────
+    // ACTIONS
 
     public void navigateToPlatformLocator(WebDriver driver) {
         AllUtilityFunctions util = new AllUtilityFunctions(driver);
@@ -89,7 +89,7 @@ public class IxigoPlatformPage {
         js.executeScript("window.scrollBy(0, 300)");
         util.sleep(1);
 
-        // STEP 1: Find and click a green AVL class box
+        // Find and click a green AVL class box
         boolean classClicked = false;
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(
@@ -120,7 +120,7 @@ public class IxigoPlatformPage {
             return;
         }
 
-        // STEP 2: Click first BOOK button in the expanded date strip
+        // Click first BOOK button in the expanded date strip
         System.out.println("Clicking BOOK from date strip...");
         boolean booked = clickFirstBookInStrip(driver, js, util);
 

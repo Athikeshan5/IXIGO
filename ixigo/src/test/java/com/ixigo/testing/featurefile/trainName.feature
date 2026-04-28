@@ -1,8 +1,5 @@
 Feature: Train Search by Name or Number
 
-  # This module uses Excel-driven parametrization via Apache POI.
-  # Train names are read from: src/test/resources/Reader/TrainTestData.xlsx
-  # Each row in the Excel sheet becomes one test run.
 
   Scenario Outline: Search train and proceed to booking
     Given User is on train name search page
@@ -17,5 +14,5 @@ Feature: Train Search by Name or Number
     Examples:
       | train            |
       | Pallavan Express |
-      | Chennai Express  |
+      | Kushinagar Exp  |
 

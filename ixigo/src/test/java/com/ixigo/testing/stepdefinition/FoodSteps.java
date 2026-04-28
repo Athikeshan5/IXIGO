@@ -8,11 +8,7 @@ import com.ixigo.testing.utilities.Pages;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
 
-/**
- * FoodSteps
- * Step definitions for Food Delivery in Train module.
- * Every step logs to Extent Report for detailed reporting.
- */
+
 public class FoodSteps {
 
     public BaseClass b;

@@ -7,11 +7,7 @@ import com.ixigo.testing.utilities.Pages;
 
 import io.cucumber.java.en.*;
 
-/**
- * StationSteps
- * Step definitions for Search by Station module.
- * Every step logs to Extent Report for detailed reporting.
- */
+
 public class StationSteps {
 
     public BaseClass b;

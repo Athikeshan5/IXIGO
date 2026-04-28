@@ -39,7 +39,7 @@ public class LoginPopupHandler {
     // Used by @Then steps in CommonSteps to assert login popup appeared
     public boolean isLoginPopupDisplayed() {
         try {
-            // Wait up to 15 seconds 
+            // Wait
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             WebElement popup = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(loginPopupHeading)

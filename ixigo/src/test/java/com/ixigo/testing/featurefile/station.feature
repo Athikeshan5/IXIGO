@@ -4,7 +4,7 @@ Feature: Ixigo Station Booking Flow
 
     Given User is on train page
     When User navigates to station module
-    And User enters station code "AJJ"
+    And User enters station code "ADI"
     And User clicks search
     And User clicks book now
     And User selects AVL and books ticket

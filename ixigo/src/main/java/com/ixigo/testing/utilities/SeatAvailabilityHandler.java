@@ -18,9 +18,9 @@ public class SeatAvailabilityHandler {
         this.wait   = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
-    // ── LOCATORS confirmed from screenshots ──────────────────────────────────
+    // LOCATORS
 
-    // Class tabs at top: "1A ₹2910", "2A ₹1710", "3A ₹1185", "SL ₹435"
+   
     // These are the train class selector tabs
     By classTabs = By.xpath(
         "//div[contains(@class,'train-class-item')]" +
@@ -28,16 +28,15 @@ public class SeatAvailabilityHandler {
         " | //li[contains(@class,'class')]"
     );
 
-    // Green day tiles — these contain the AVL count (Image 1 & 2)
-    // div.day-item.u-ib.green is the confirmed selector from DevTools
+ 
     By greenDayTiles = By.xpath(
         "//div[contains(@class,'day-item') and contains(@class,'green')]"
     );
 
-    // All day tiles (including non-green) — fallback
+    // All day tiles 
     By allDayTiles = By.xpath("//div[contains(@class,'day-item')]");
 
-    // avail-text inside a day tile — contains "AVL675" or "AVL 6"
+    // avail-text inside a day tile 
     By availTextInTile = By.xpath(
         "//div[contains(@class,'day-item')]//div[contains(@class,'avail-text') and contains(.,'AVL')]"
     );
@@ -49,7 +48,7 @@ public class SeatAvailabilityHandler {
         " | //a[contains(.,'View 2')]"
     );
 
-    // BOOK button on sticky bottom bar (confirmed Image 4 & 7)
+ 
     // button.c-btn.u-link.enabled with text "Book"
     By bookBtn = By.xpath(
         "//div[contains(@class,'book-btn')]//button" +
@@ -59,7 +58,7 @@ public class SeatAvailabilityHandler {
         " | //button[normalize-space()='Book']"
     );
 
-    // ── PUBLIC API ───────────────────────────────────────────────────────────
+    // PUBLIC API
 
     public boolean isOnSeatAvailabilityPage() {
         return driver.getCurrentUrl().contains("seat-availability");
@@ -73,13 +72,10 @@ public class SeatAvailabilityHandler {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         sleep(2000);
 
-        // STEP 1: Select a class tab that shows AVL
-        // On seat-availability page, class tabs are at the top
-        // Clicking one loads the date availability strip below
+        // Select a class tab that shows AVL
         boolean classSelected = selectAVLClassTab(js);
         if (!classSelected) {
-            System.out.println("No specific AVL class found — using default (first) class tab");
-            // Click first class tab to load dates
+            System.out.println("No specific AVL class found — using first class tab");
             try {
                 List<WebElement> tabs = driver.findElements(classTabs);
                 if (!tabs.isEmpty() && tabs.get(0).isDisplayed()) {
@@ -92,11 +88,11 @@ public class SeatAvailabilityHandler {
 
         sleep(1500);
 
-        // STEP 2: Pick first green (AVL) date tile
+        // Pick first green (AVL) date tile
         boolean dateClicked = selectFirstAVLDate(js);
 
         if (!dateClicked) {
-            // Try opening 2-month calendar view
+            // Opening 2-month calendar view
             try {
                 WebElement cal = new WebDriverWait(driver, Duration.ofSeconds(5))
                     .until(ExpectedConditions.elementToBeClickable(calendarLink));
@@ -116,18 +112,15 @@ public class SeatAvailabilityHandler {
 
         sleep(1500);
 
-        // STEP 3: Click BOOK button
+        // Click BOOK button
         System.out.println("Clicking BOOK on seat-availability page...");
         clickBookButton(js);
         sleep(1000);
     }
 
-    // ── HELPERS ──────────────────────────────────────────────────────────────
+    // HELPERS
 
-    /**
-     * Selects the first class tab that has AVL in its text.
-     * Class tabs look like: "2S ₹150  AVL 638" or "1A ₹2910"
-     */
+
     private boolean selectAVLClassTab(JavascriptExecutor js) {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(classTabs));
@@ -153,12 +146,8 @@ public class SeatAvailabilityHandler {
         return false;
     }
 
-    /**
-     * Picks the first green (AVL) date tile.
-     * Confirmed locator: div.day-item.u-ib.green (Images 1, 2, 4)
-     */
     private boolean selectFirstAVLDate(JavascriptExecutor js) {
-        // First try: green day tiles (most reliable — confirmed from DevTools)
+        // green day tiles 
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(greenDayTiles));
             List<WebElement> greenTiles = driver.findElements(greenDayTiles);
@@ -179,7 +168,7 @@ public class SeatAvailabilityHandler {
             System.out.println("Green tiles search failed: " + e.getMessage());
         }
 
-        // Second try: any day-item containing AVL text
+        // any day-item containing AVL text
         try {
             List<WebElement> avlTiles = driver.findElements(availTextInTile);
             for (WebElement avlDiv : avlTiles) {
@@ -202,7 +191,7 @@ public class SeatAvailabilityHandler {
             System.out.println("avail-text search failed: " + e.getMessage());
         }
 
-        // Third try: any day-item that contains "AVL" in text
+        // any day-item that contains "AVL" in text
         try {
             List<WebElement> allTiles = driver.findElements(allDayTiles);
             for (WebElement tile : allTiles) {
@@ -223,12 +212,9 @@ public class SeatAvailabilityHandler {
         return false;
     }
 
-    /**
-     * Clicks the BOOK button on the sticky bottom bar.
-     * Confirmed from Image 4 & 7: button.c-btn.u-link.enabled text="Book"
-     */
+   
     private void clickBookButton(JavascriptExecutor js) {
-        // Strategy 1: known locators
+        // known locators
         try {
             WebElement btn = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(bookBtn));
@@ -242,7 +228,7 @@ public class SeatAvailabilityHandler {
             System.out.println("Primary BOOK locator failed — scanning all buttons");
         }
 
-        // Strategy 2: scan all buttons
+        // scan all buttons
         for (WebElement btn : driver.findElements(By.tagName("button"))) {
             try {
                 String t = btn.getText().trim().toUpperCase();

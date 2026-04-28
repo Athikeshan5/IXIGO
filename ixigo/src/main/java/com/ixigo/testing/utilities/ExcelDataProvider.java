@@ -11,19 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * ExcelDataProvider
- *
- * Reads test data from Excel (.xlsx) using Apache POI.
- * Used for parametrization of the TrainName module.
- *
- * Excel file: src/test/resources/Reader/TrainTestData.xlsx
- * Sheet name: TrainData
- * Columns   : TrainName, ExpectedResult
- *
- * KEY FIX: Tries multiple path variants so it works whether run from
- * Eclipse, Maven, or testng.xml (different working directories).
- */
+
 public class ExcelDataProvider {
 
     // Try multiple paths — one will work depending on run config
@@ -34,13 +22,7 @@ public class ExcelDataProvider {
         "IXIGO/src/test/resources/Reader/TrainTestData.xlsx"
     };
 
-    /**
-     * Reads all data rows from the given sheet.
-     * Row 0 = headers, Row 1+ = data.
-     *
-     * @param sheetName  Name of the Excel sheet
-     * @return           List of row maps (header → value)
-     */
+ 
     public static List<Map<String, String>> getData(String sheetName) {
 
         List<Map<String, String>> dataList = new ArrayList<>();

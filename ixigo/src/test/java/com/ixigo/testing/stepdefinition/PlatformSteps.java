@@ -7,11 +7,7 @@ import com.ixigo.testing.utilities.Pages;
 
 import io.cucumber.java.en.*;
 
-/**
- * PlatformSteps
- * Step definitions for Train Platform Locator module.
- * Every step logs to Extent Report for detailed reporting.
- */
+
 public class PlatformSteps {
 
     public BaseClass b;

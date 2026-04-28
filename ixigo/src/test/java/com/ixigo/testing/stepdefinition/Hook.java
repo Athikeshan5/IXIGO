@@ -27,7 +27,7 @@ public class Hook extends AllUtilityFunctions {
     public BaseClass b;
     AllUtilityFunctions util = new AllUtilityFunctions();
 
-    // Mobile number read from commonData.properties (mobileNumber=XXXXXXXXXX)
+    // Mobile number read from commonData.properties 
     private final String MOBILE = util.getPropertyValue("mobileNumber");
 
     public Hook(BaseClass b) {
@@ -58,7 +58,7 @@ public class Hook extends AllUtilityFunctions {
 
         WebDriver driver = b.getDriver();
 
-        // Set page load timeout — prevents HttpTimeoutException during OTP waits
+        // Set page load timeout  prevents HttpTimeoutException during OTP waits
         driver.manage().timeouts().pageLoadTimeout(Duration.ofMinutes(5));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 
@@ -86,11 +86,10 @@ public class Hook extends AllUtilityFunctions {
             System.out.println("Maximize skipped: " + e.getMessage());
         }
 
-        // Dismiss wiz-iframe popup (blocks clicks if not dismissed)
+        // Dismiss wiz-iframe popup 
         dismissWizPopup(driver);
 
-        // LOGIN via cookies or manual OTP (one-time per machine)
-        // Food module doesn't need login — skip for it
+        // LOGIN via cookies or manual OTP
         String scenarioName = scenario.getName().toLowerCase();
         if (!scenarioName.contains("food")) {
             CookieManager cookieManager = new CookieManager(driver);
@@ -107,10 +106,7 @@ public class Hook extends AllUtilityFunctions {
         }
     }
 
-    /**
-     * Dismisses the full-screen wiz-iframe-intent popup that ixigo shows on load.
-     * Must switch into the iframe, click closeButton, then switch back.
-     */
+    
     private void dismissWizPopup(WebDriver driver) {
         try {
             WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(8));
@@ -150,6 +146,6 @@ public class Hook extends AllUtilityFunctions {
         }
 
         b.unload();
-        // Extent Report flushed by ReportManager.onFinish() — NOT here (parallel-safe)
+        // Extent Report flushed by ReportManager.onFinish() 
     }
 }

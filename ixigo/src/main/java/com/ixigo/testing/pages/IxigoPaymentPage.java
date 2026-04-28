@@ -10,12 +10,12 @@ import java.time.Duration;
 
 public class IxigoPaymentPage {
 
-    // ── @FindBy locators (PageFactory pattern) ────────────────────────────────
+    //locators
 
     @FindBy(xpath = "//button[contains(.,'Proceed to Pay')]")
     private WebElement proceedToPayBtn;
 
-    // ── ACTIONS (driver passed as parameter, matching teammate pattern) ────────
+    // ACTIONS
 
     public boolean isProceedToPayVisible(WebDriver driver) {
         try {

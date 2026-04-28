@@ -39,8 +39,6 @@ public class LoginModule {
         System.out.println("  Cookie file  : " + COOKIE_FILE);
         System.out.println("═══════════════════════════════════════════════════════");
 
-        // Always delete old cookie file before re-login to ensure fresh cookies
-        // This fixes the issue where stale cookies were loaded and login wasn't detected
         if (Files.exists(Paths.get(COOKIE_FILE))) {
             System.out.println("[LoginModule] Deleting old cookie file to ensure fresh login...");
             try { Files.delete(Paths.get(COOKIE_FILE)); } catch (Exception ignored) {}
@@ -95,7 +93,7 @@ public class LoginModule {
         switch (browser.toLowerCase()) {
             case "chrome":
                 ChromeOptions opts = new ChromeOptions();
-                // opts.addArguments("--headless=new"); // Uncomment for headless
+                // opts.addArguments("--headless=new"); 
                 return new ChromeDriver(opts);
             case "edge":
                 return new EdgeDriver();
